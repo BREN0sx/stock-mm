@@ -1,0 +1,85 @@
+document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
+    const dropZoneElement = inputElement.closest(".drop-zone");
+
+    function isImage(file) {
+        return file.type.startsWith('image/');
+    }
+
+    dropZoneElement.addEventListener("click", (e) => {
+        inputElement.click();
+    });
+
+    inputElement.addEventListener("change", (e) => {
+        if (inputElement.files.length) {
+            const file = inputElement.files[0];
+            if (isImage(file)) {
+                updateThumbnail(dropZoneElement, file);
+            } else {
+                alert("Por favor, selecione um arquivo de imagem.");
+            }
+        }
+    });
+
+    dropZoneElement.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropZoneElement.classList.add("drop-zone--over");
+    });
+
+    ["dragleave", "dragend"].forEach((type) => {
+        dropZoneElement.addEventListener(type, (e) => {
+            dropZoneElement.classList.remove("drop-zone--over");
+        });
+    });
+
+    dropZoneElement.addEventListener("drop", (e) => {
+        e.preventDefault();
+
+        if (e.dataTransfer.files.length) {
+            const file = e.dataTransfer.files[0];
+            if (isImage(file)) {
+                inputElement.files = e.dataTransfer.files;
+                updateThumbnail(dropZoneElement, file);
+            } else {
+                alert("Por favor, selecione um arquivo de imagem.");
+            }
+        }
+
+        dropZoneElement.classList.remove("drop-zone--over");
+    });
+});
+/**
+ * Updates the thumbnail on a drop zone element.
+ *
+ * @param {HTMLElement} dropZoneElement
+ * @param {File} file
+ */
+function updateThumbnail(dropZoneElement, file) {
+	let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
+
+	// First time - remove the prompt
+    if (dropZoneElement.querySelector('.drop-zone__thumb')) dropZoneElement.querySelector('.drop-zone__thumb').style.cssText = 'display: block;';
+	if (dropZoneElement.querySelector(".drop-zone__prompt")) dropZoneElement.querySelector(".drop-zone__prompt").style.cssText = 'display: none;';
+    if (dropZoneElement.querySelector(".drop-zone__prompt.support")) dropZoneElement.querySelector(".drop-zone__prompt.support").style.cssText = 'display: none;';
+    if (dropZoneElement.querySelector(".drop-zone__prompt.editor-viewer")) dropZoneElement.querySelector(".drop-zone__prompt.editor-viewer").style.cssText = 'display: none;';
+
+	// First time - there is no thumbnail element, so lets create it
+	if (!thumbnailElement) {
+		thumbnailElement = document.createElement("div");
+		thumbnailElement.classList.add("drop-zone__thumb");
+		dropZoneElement.appendChild(thumbnailElement);
+	}
+
+	thumbnailElement.dataset.label = file.name;
+
+	// Show thumbnail for image files
+	if (file.type.startsWith("image/")) {
+		const reader = new FileReader();
+
+		reader.readAsDataURL(file);
+		reader.onload = () => {
+			thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
+		};
+	} else {
+		thumbnailElement.style.backgroundImage = null;
+	}
+}

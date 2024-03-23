@@ -1,6 +1,6 @@
 <?php
-if (isset($_GET['by'])) require '../includes/_db.php';
-else require '../src/includes/_db.php';
+if (isset($_GET['by'])) require '../../src/includes/_db.php';
+else require '../../src/includes/_db.php';
 
     $place_id = $_GET['room'];
     $id = $_GET['item'];
@@ -15,7 +15,7 @@ else require '../src/includes/_db.php';
 
 <?php if (!isset($_GET['by'])) { ?><div class="add-modal" id="modal_edit" style="display: <?php echo $id == "" ? "none": "flex";?>;"><?php } ?>
 
-<form action="../src/includes/_functions.php" method="POST"  enctype="multipart/form-data">
+<form action="../../src/includes/_functions.php" method="POST"  enctype="multipart/form-data">
 
 
 <div class="add-section">
@@ -148,4 +148,3 @@ else require '../src/includes/_db.php';
 </div>
 </form>
 </div>
-                    

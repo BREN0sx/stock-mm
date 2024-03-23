@@ -8,7 +8,7 @@
 ?>
 
 <div class="add-modal" id="modal_add" style="display: none;">
-    <form id="form-add" action="../src/includes/_functions.php" method="POST"  enctype="multipart/form-data">
+    <form id="form-add" action="../../src/includes/_functions.php" method="POST"  enctype="multipart/form-data">
 
 <div class="add-section">
     <div class="add-container">

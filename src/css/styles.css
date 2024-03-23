@@ -15,15 +15,12 @@
   
 html {
     scroll-behavior: smooth;
+    margin-bottom: 4rem;
 }
 
 body {
     background: #fff;
     margin: 0;
-    margin-bottom: 3rem;
-    background-repeat: no-repeat;
-    background-image: url(../assets/gradient_interna.svg), url(../assets/gradient_interna.svg);
-    background-position: left -60% top -90%, right -60% top 80%;
 }
 
 ::-webkit-scrollbar-track {
@@ -69,8 +66,7 @@ h1 {
 }
 
 .nav-logo img {
-    /* box-shadow: 0 0 18px 12px #1B1C1D; */
-    width: 9.5rem;
+    width: 10.5rem;
 }
 
 .nav-btn {
@@ -313,6 +309,13 @@ h4 {
     justify-content: space-between;
     margin: 0 6rem 1rem 6rem;
 }
+
+.main-container h1 span {
+    color: gray;
+    font-size: 11pt;
+    font-weight: 500;
+    margin-left: 0.2rem;
+  }
 
 .main-btn {
     display: flex;
@@ -1219,4 +1222,380 @@ td:hover {
 .actions-itens span:hover  { 
     opacity: 0.7;
     cursor: pointer;
+}
+
+.logout-user {
+    color: #fff;
+    cursor: pointer;
+}
+
+
+/* LOGIN */
+
+.login-container {
+    background-image: url('https://sigenovo.seduc.ce.gov.br/static/media/bg_body.de1c5bb0.jpg');
+    background-position: 100%;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+}
+.login-section {
+    height: 100%;
+}
+.login-section:first-child {
+    background: linear-gradient(180deg, #204E37, #00853B);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+.login-section:last-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5rem 15rem;
+}
+.login-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.login-container img {
+    width: 12rem;
+}
+.login-input-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: .5rem;
+}
+.login-input-box label {
+    font-size: 11pt;
+    margin-bottom: .5rem;
+}
+.login-input {
+    width: 20rem;
+}
+.login-form input {
+    padding: 12px 15px;
+}
+.login-form input:hover {
+    opacity: .9;
+}
+.login-btn {
+    color: #fff;
+    background: #00853B;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-weight: 500;
+    border: none;
+}
+.login-container h1 {
+    font-size: 24pt;
+    font-weight: 600;
+    margin-bottom: .2rem;
+}
+.login-container span {
+    font-size: 11pt;
+    color: #9d9d9d;
+    margin-bottom: 2rem;
+}
+.login-container .danger-input{
+    color: red;
+    margin-bottom: 1rem;
+}
+
+
+
+/* MOBILE */
+
+@media only screen and (max-width: 1000px) {
+
+    /* NAVBAR */
+
+    .navbar {
+        height: 12rem;
+    }
+
+    .nav-logo img {
+        width: 18.5rem;
+    }
+
+    .logout-user span {
+        font-size: 35pt;
+    }
+
+    /*  */
+    .main-container {
+        flex-direction: column;
+        margin: 0 6rem 5rem 6rem;
+    }
+    .main-container h1 {
+        font-size: 50pt;
+        margin-bottom: 0;
+    }
+    .main-container h1 span {
+        font-size: 20pt;
+    }
+    input#search_locate_item {
+        margin-top: 3.5rem;
+        width: 70vw;
+        padding: 30px 50px;
+        font-size: 20pt;
+        border-radius: 10px;
+        background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='%2300000082' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat right 40px center;
+    }
+
+    .map-section {
+        flex-direction: column-reverse;
+    }
+
+    .floor-title {
+        font-size: 30pt;
+    }
+
+    .floor-select {
+        width: 100%;
+        flex-direction: row;
+    }
+
+    .floor-btn {
+        width: 100%;
+        font-size: 25pt;
+        padding: 20px 50px;
+    }
+
+    .floor-btn:last-child {
+        margin-left: 1rem;
+        margin-top: 0;
+    }
+
+    .floor-items {
+        margin-bottom: 8rem;
+    }
+
+    .active-map-floor {
+        display: flex !important;
+        justify-content: center;
+    }
+
+    .map_floor_view svg {
+        width: 100% !important;
+    }
+
+    /*  */
+
+    input#search_item {
+        padding: 20px 30px 20px 70px;
+        font-size: 20pt;
+        border-radius: 10px;
+        width: 70vw;
+        margin: 0;
+        margin-right: 1rem;
+        background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='%2300000082' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 25px center;
+    }
+
+    #pdf-creator-btn {
+        padding: 20px 20px;
+        font-size: 36pt;
+        border-radius: 10px;
+    }
+
+    .main-btn {
+        padding: 20px 50px;
+        font-size: 20pt;
+        border-radius: 10px;
+        width: 20vw;
+    }
+
+    .main-btn .material-icons {
+        font-size: 25pt;
+    }
+
+    ._modal_add_open {
+        margin-left: 1rem;
+    }
+
+    .dropdown-list {
+        top: 85px;
+        padding: 1.5rem;
+        width: 360px;
+    }
+
+    .dropdown-list-item {
+        padding: 0.5rem 0rem 1rem 1rem;
+        font-size: 20pt;
+    }
+
+    .dropdown-list-item span {
+        font-size: 26pt;
+        margin-right: 1.5rem;
+    }
+
+    /*  */
+
+    .products-container {
+        margin-top: 5rem;
+    }
+
+    .viewer-container {
+        flex-direction: column;
+    }
+
+    .title-text {
+        font-size: 18pt; 
+    }
+
+    .add-label span {
+        font-size: 30pt;
+    }
+
+    .add-label h1 {
+        font-size: 30pt;
+    }
+
+    .add-container {
+        width: 80vw;
+    }
+
+    .drop-zone {
+        margin: 2rem 0;
+        font-size: 20pt;
+        border: 1px solid #b8b8b8;
+    }
+
+    .drop-zone .support {
+        font-size: 15pt;
+    }
+
+    .viewer-image {
+        width: auto;
+    }
+
+    .viewer-text {
+        padding-bottom: 1.3rem;
+    }
+
+    .viewer-text input {
+        width: auto;
+        padding: 20px;
+        font-size: 20pt;
+        border-radius: 10px;
+    }
+
+    .viewer-text select {
+        width: auto;
+        padding: 20px;
+        font-size: 20pt;
+        border-radius: 10px;
+    }
+
+    .viewer-text-container {
+        flex-direction: column;
+        margin: 0;
+    }
+    .viewer-container:not(:last-child) {
+        margin: 0;
+    }
+
+    .form-section.viewer-section:first-child {
+        margin: 0;
+    }
+
+    .viewer-section:last-child {
+        margin: 0;
+    }
+
+    .form-btn {
+        justify-content: center;
+        padding: 20px 50px;
+        font-size: 20pt;
+        border-radius: 10px;
+        width: 100%;
+    }
+
+    .form-btn span {
+        font-size: 26pt;
+        margin-right: .5rem;
+    }
+
+
+    /*  */
+
+    .info-text {
+        font-size: 22pt;
+    }
+
+    #modal_view .viewer-image {
+        margin-bottom: 2rem;
+    }
+
+    #modal_view .viewer-text-container {
+        margin-left: 2rem;
+        flex-direction: row;
+    }
+
+    .actions-itens span {
+        padding: 20px 20px;
+        font-size: 36pt;
+        border-radius: 10px;
+        margin-left: 0.5rem;
+    }
+
+    th:nth-child(6), td:nth-child(6), tr:nth-child(6), th:nth-child(5), td:nth-child(5), tr:nth-child(5), th:nth-child(4), td:nth-child(4), tr:nth-child(4) {
+        display: none
+    }
+
+    th:nth-child(2), th:nth-child(3)  {
+        width: 30vw !important;
+    }
+
+    td .material-symbols-outlined {
+        font-size: 28pt;
+    }
+
+    th, td {
+        padding: 20px 8px;
+        font-size: 18pt;
+    }
+
+
+    /* LOGIN */
+    .login-container {
+        flex-direction: column;
+    }
+    .login-container img {
+        width: 23rem;
+    }
+    .login-container h1 {
+       font-size: 56pt; 
+    }
+    .login-container span {
+       font-size: 24pt; 
+    }
+    .login-section:first-child {
+        height: 20rem;
+        width: 100%;
+    }
+    .login-section:last-child {
+        justify-content: flex-start;
+        margin: 5rem;
+    }
+    .login-form input {
+        padding: 30px 50px;
+        font-size: 25pt;
+        border-radius: 10px;
+    }
+    .login-input-box {
+        margin-bottom: 1rem;
+    }
+    .login-input {
+        width: 70vw;
+    }
+    .login-btn {
+        width: 100%;
+    }
+    .login-container .danger-input {
+        font-size: 20pt;
+    }
 }

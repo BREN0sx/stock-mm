@@ -47,22 +47,15 @@ document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
         dropZoneElement.classList.remove("drop-zone--over");
     });
 });
-/**
- * Updates the thumbnail on a drop zone element.
- *
- * @param {HTMLElement} dropZoneElement
- * @param {File} file
- */
+
 function updateThumbnail(dropZoneElement, file) {
 	let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
 
-	// First time - remove the prompt
     if (dropZoneElement.querySelector('.drop-zone__thumb')) dropZoneElement.querySelector('.drop-zone__thumb').style.cssText = 'display: block;';
 	if (dropZoneElement.querySelector(".drop-zone__prompt")) dropZoneElement.querySelector(".drop-zone__prompt").style.cssText = 'display: none;';
     if (dropZoneElement.querySelector(".drop-zone__prompt.support")) dropZoneElement.querySelector(".drop-zone__prompt.support").style.cssText = 'display: none;';
     if (dropZoneElement.querySelector(".drop-zone__prompt.editor-viewer")) dropZoneElement.querySelector(".drop-zone__prompt.editor-viewer").style.cssText = 'display: none;';
 
-	// First time - there is no thumbnail element, so lets create it
 	if (!thumbnailElement) {
 		thumbnailElement = document.createElement("div");
 		thumbnailElement.classList.add("drop-zone__thumb");
@@ -71,7 +64,6 @@ function updateThumbnail(dropZoneElement, file) {
 
 	thumbnailElement.dataset.label = file.name;
 
-	// Show thumbnail for image files
 	if (file.type.startsWith("image/")) {
 		const reader = new FileReader();
 

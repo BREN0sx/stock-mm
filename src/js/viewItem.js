@@ -17,7 +17,7 @@
 
         $.ajax({
             type: 'GET',
-            url: '../src/structures/item_viewer.php',
+            url: '../../src/structures/item_viewer.php',
             data: { item: numeroItem, room: roomID, tab: 1, by: 0 },
             success: function(response) {
                 let modalView = $('[id^="modal_"]:not(#modal_add)');
@@ -56,7 +56,7 @@
 
         $.ajax({
             type: 'GET',
-            url: `../src/structures/${loca[0]}.php`,
+            url: `../../src/structures/${loca[0]}.php`,
             data: { item: itemID, room: roomID, tab: numeroTab, by: 0 },
             success: function(response) {
                 let modalView = $('[id^="modal_"]:not(#modal_add)');
@@ -77,14 +77,14 @@
 
     function scriptReloader() {
         let modalScriptReload = document.createElement('script')
-        modalScriptReload.src = '../src/js/modal.js';
-        let modalScript = document.querySelector('script[src="../src/js/modal.js"]');
+        modalScriptReload.src = '../../src/js/modal.js';
+        let modalScript = document.querySelector('script[src="../../src/js/modal.js"]');
         modalScript.before(modalScriptReload)
         modalScript.remove();
 
         let fileImportScriptReload = document.createElement('script')
-        fileImportScriptReload.src = '../src/js/fileImport.js';
-        let fileImportScript = document.querySelector('script[src="../src/js/fileImport.js"]');
+        fileImportScriptReload.src = '../../src/js/fileImport.js';
+        let fileImportScript = document.querySelector('script[src="../../src/js/fileImport.js"]');
         fileImportScript.before(fileImportScriptReload)
         fileImportScript.remove();
     }

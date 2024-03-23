@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<?php require '../src/includes/_db.php'?>
-<?php require '../src/includes/_header.php'?>
-<?php require '../src/structures/item_viewer.php'?>
-<?php require '../src/structures/item_add.php'?>
-<?php require '../src/structures/item_edit.php'?>
-<?php require '../src/structures/item_remove.php'?>
+<?php require '../../src/includes/_header.php'?>
+<?php require '../../src/includes/_db.php'?>
+<?php require '../../src/structures/item_viewer.php'?>
+<?php require '../../src/structures/item_add.php'?>
+<?php require '../../src/structures/item_edit.php'?>
+<?php require '../../src/structures/item_remove.php'?>
 <body>
-
+  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 <?php
@@ -21,14 +19,6 @@
 ?>
 
 <div class="main-container">
-  <style>
-    .main-container h1 span {
-      color: gray;
-      font-size: 11pt;
-      font-weight: 500;
-      margin-left: 0.2rem;
-    }
-  </style>
     <h1><?php echo ucfirst(strtolower($session_name))?> <span>(<?php echo mysqli_num_rows($item_result)?>)</span></h1>
     <div class="main-container-action">
 
@@ -77,7 +67,7 @@
 
     function load_data(query) {
       $.ajax({
-        url:"../src/structures/loaders/item_searcher.php",
+        url:"../../src/structures/loaders/item_searcher.php",
         method:"POST",
         data:{
         query: query,
@@ -111,9 +101,8 @@
   });
 </script>
 
-<script src="../src/js/viewItem.js"></script>
-<script src="../src/js/fileImport.js"></script>
-<script src="../src/js/modal.js"></script>
-<script src="../src/js/pdfCreator.js"></script>
-
+<script src="../../src/js/viewItem.js"></script>
+<script src="../../src/js/fileImport.js"></script>
+<script src="../../src/js/modal.js"></script>
+<script src="../../src/js/pdfCreator.js"></script>
 </html>

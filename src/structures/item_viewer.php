@@ -1,8 +1,6 @@
 <?php
-/* echo $_GET['item']; */
-
-    if (isset($_GET['by'])) require '../includes/_db.php';
-    else require '../src/includes/_db.php';
+    if (isset($_GET['by'])) require '../../src/includes/_db.php';
+    else require '../../src/includes/_db.php';
     
     $item_id = "";
     if(isset($_GET['item'])) {
@@ -52,7 +50,7 @@
                     $imageData = $item['image_item'];
 
                     if ($imageData == "") {
-                        $imageUrl = 'src="../src/assets/ImageNotFound.png"';
+                        $imageUrl = 'src="../../src/assets/ImageNotFound.png"';
                     } else if (filter_var($imageData, FILTER_VALIDATE_URL)) {
                         $imageUrl = 'src="' . $imageData . '"';
                     } else {

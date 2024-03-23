@@ -33,11 +33,6 @@ function item_add(){
 
     $image_product = mysqli_escape_string($db,$image_bin);
     }
-
-    /* $resp_query = "SELECT resp_id FROM resp WHERE active_resp = 1 LIMIT 1";
-    $resp_result = mysqli_query($db, $resp_query);
-    $resp_id = mysqli_fetch_assoc($resp_result)['resp_id'];
-     */
     
     $date_item = date('Y-m-d');
 
@@ -65,7 +60,7 @@ function item_add(){
         ");
     }
     
-    header("Location: ../../views/item_list.php?room=$id_place");
+    header("Location: ../../views/stock?room=$id_place");
 }
 
 function item_edit(){
@@ -105,7 +100,7 @@ function item_edit(){
         ");
     }
 
-    header("Location: ../../views/item_list.php?room=$id_place&item=$id");
+    header("Location: ../../views/stock?room=$id_place&item=$id");
 }
 function item_remove(){
     global $db;
@@ -115,23 +110,6 @@ function item_remove(){
     $id_place = $_POST['place_id'];
     $item_query = "DELETE FROM item WHERE id_item = $id_item";
     mysqli_query($db, $item_query);
-    header("Location: ../../views/item_list.php?room=$id_place");
-}
-
-
-function change_active_resp(){
-    /* global $db;
-    extract($_POST);
-
-    $active_resp_id = $_POST['rrid'];
-    $inactive_resp_id = $_POST['srid'];
-
-    $unset_resp_query = "UPDATE resp SET active_resp = 0 WHERE resp_id = $active_resp_id";
-    mysqli_query($db, $unset_resp_query);
-
-    $set_resp_query = "UPDATE resp SET active_resp = 1 WHERE resp_id = $inactive_resp_id";
-    mysqli_query($db, $set_resp_query);
-
-    header("Location: ../../views/index.php"); */
+    header("Location: ../../views/stock?room=$id_place");
 }
 ?>

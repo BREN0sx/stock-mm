@@ -1,5 +1,5 @@
 <?php
-$db = mysqli_connect("localhost", "eeepma26_stock", "stock8xYfSX%", "eeepma26_stock");
+$db = mysqli_connect("localhost", "root", "", "storage");
 mysqli_set_charset($db, 'utf8');
 
 if(!$db){

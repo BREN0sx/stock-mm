@@ -5,6 +5,6 @@
 
         var idNumero = this.id.match(/\d+/)[0];
     
-        window.open("../src/includes/_pdf.php?type=" + idNumero + "&room=" + roomValue, "_blank");
+        window.open("../../src/includes/_pdf.php?type=" + idNumero + "&room=" + roomValue, "_blank");
     });
 })(jQuery);

@@ -10,7 +10,7 @@
 <div class="map-container">
 
 <div class="map_floor_view map_floor_01 active-map-floor" id="map_floor_01">
-   <svg width="70vw" viewBox="0 0 11197 5593"
+   <svg id="svg_map_01" height="30rem" width="75vw" viewBox="0 0 11197 5593"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
    <defs>
@@ -1726,7 +1726,7 @@
 </div>
 
 <div class="map_floor_view map_floor_02" id="map_floor_02">
-    <svg width="70vw" viewBox="0 0 65266 32596"
+    <svg id="svg_map_02" height="30rem" width="75vw" viewBox="0 0 65266 32596"
      xmlns:xlink="http://www.w3.org/1999/xlink"
      xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
      <defs>
@@ -2603,8 +2603,6 @@
     </section>
 </section>
 
-<script src="../../src/js/setFloor.js"></script>
-
 <script>
 $(document).ready(function(){
  load_data();
@@ -2644,10 +2642,10 @@ $(document).ready(function(){
          }
       });
 
-      var squareElement = '<svg id="map_pulse" viewbox="'+floor[2]+'" xmlns="http://www.w3.org/2000/svg"><polygon points="'+coordinates+'" fill="none" stroke="#FF1212" stroke-width="'+floor[3]+'" stroke-dasharray="'+floor[4]+'" stroke-dashoffset="0"> ' +
+      var squareElement = '<svg id="map_pulse" style="overflow: auto;"><polygon points="'+coordinates+'" fill="none" stroke="#FF1212" stroke-width="'+floor[3]+'" stroke-dasharray="'+floor[4]+'" stroke-dashoffset="0"> ' +
       '<animate attributeName="opacity" from="1" to="0.1" dur="1.5s" begin="0.2s" repeatCount="indefinite"/>' +
       '<animate attributeName="stroke-dashoffset" from="0" to="'+floor[5]+'" dur="15s" begin="0s" repeatCount="indefinite"></animate>'+
-      '</rect></svg>';
+      '</rect>';
 
       polygon.before(squareElement);
 
@@ -2693,4 +2691,6 @@ $(document).ready(function(){
  });
 });
 </script>
+
+<script src="../../src/js/setFloor.js"></script>
 </html>

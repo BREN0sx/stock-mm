@@ -31,6 +31,8 @@ if(isset($_COOKIE['token'])){
     <meta property="og:title" content="Stock Manager - EEEP Manoel Mano">
     <meta property="og:image" content="https://i.imgur.com/nNLnE7P.jpeg">
 
+    <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.5.0/dist/svg-pan-zoom.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

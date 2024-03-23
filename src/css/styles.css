@@ -15,7 +15,7 @@
   
 html {
     scroll-behavior: smooth;
-    margin-bottom: 4rem;
+    /* margin-bottom: 4rem; */
 }
 
 body {
@@ -1198,6 +1198,10 @@ td:hover {
     display: none;
 }
 .active-map-floor {
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 7px, rgba(0, 0, 0, 0.1) 1px, transparent 8px), repeating-linear-gradient(90deg, transparent, transparent 7px, rgba(0, 0, 0, 0.1) 1px, transparent 8px);
+    background-size: 8px 8px;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    border-radius: 10px;
     display: block !important;
 }
 

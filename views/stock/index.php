@@ -58,35 +58,33 @@
         </div>
     </div>
 
-    <div id="conteudo"></div>
+  <script>
+    $(document).ready(function(){
+      let place = new URLSearchParams(window.location.search).get('room');
+      load_data();
 
-<script>
-  $(document).ready(function(){
-    let place = new URLSearchParams(window.location.search).get('room');
-    load_data();
-
-    function load_data(query) {
-      $.ajax({
-        url:"../../src/structures/loaders/item_searcher.php",
-        method:"POST",
-        data:{
-        query: query,
-        place: place
-      },
-      success:function(data)
-      {
-        $('#tableContainer').html(data);
+      function load_data(query) {
+        $.ajax({
+          url:"../../src/structures/loaders/item_searcher.php",
+          method:"POST",
+          data:{
+          query: query,
+          place: place
+        },
+        success:function(data)
+        {
+          $('#tableContainer').html(data);
+        }
+        });
       }
-      });
-    }
 
-    $('#search_item').keyup(function(){
-      var search = $(this).val();
-      if (search != '') load_data(search);
-      else load_data();
+      $('#search_item').keyup(function(){
+        var search = $(this).val();
+        if (search != '') load_data(search);
+        else load_data();
+      });
     });
-  });
-</script>
+  </script>
 
 <script>
   let profileDropdownList = document.querySelector(".dropdown-list");

@@ -64,9 +64,8 @@ if(isset($_COOKIE['token'])){
 }
 ?>
 
-
 <!doctype html>
-<html lang="pt-BR" style="margin: 0">
+<html lang="pt-BR">
   	<head>
     	<meta charset="utf-8">
     	<title>Stock - EEEP Manoel Mano</title>

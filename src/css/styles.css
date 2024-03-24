@@ -15,7 +15,6 @@
   
 html {
     scroll-behavior: smooth;
-    /* margin-bottom: 4rem; */
 }
 
 body {
@@ -953,16 +952,16 @@ input#search_locate_item {
 }
 
 
-
 .products-container {
     display: flex;
     justify-content: center;
+    margin-bottom: 4rem;
 }
 .products-filter {
     width: 30vw;
-background: #fff;
-border: solid .7rem #EBEBEB;
-border-radius: 10px;
+    background: #fff;
+    border: solid .7rem #EBEBEB;
+    border-radius: 10px;
 }
 
 

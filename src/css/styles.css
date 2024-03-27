@@ -47,6 +47,55 @@ h1 {
     border-radius: 15px;
 }
 
+/* LOADER */
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f7f9fb;
+    transition: opacity 0.75s, visibility 0.75s;
+    z-index: 99999;
+}
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.spin {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    position: relative;
+    animation: rotate 1s linear infinite
+}
+.spin::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    inset: 0px;
+    border-radius: 50%;
+    border: 5px solid #204E37;
+    animation: prixClipFix 2s linear infinite ;
+}
+
+@keyframes rotate {
+    100% {transform: rotate(360deg)}
+}
+
+@keyframes prixClipFix {
+    0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+    25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+    50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+    75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+    100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+}
+
 /* NAVBAR */
 
 .navbar {
@@ -1193,6 +1242,7 @@ td:hover {
     background: #00853B;
 }
 .map_floor_view {
+    cursor: grab;
     color: white;
     display: none;
 }
@@ -1314,6 +1364,17 @@ td:hover {
 
 @media only screen and (max-width: 1000px) {
 
+    /* LOADER */
+
+    .spin {
+        width: 10rem;
+        height: 10rem;
+    }
+
+    .spin::before {
+        border: 1rem solid #204E37;
+    }
+
     /* NAVBAR */
 
     .navbar {
@@ -1350,6 +1411,7 @@ td:hover {
     }
 
     .map-section {
+        margin: 0;
         flex-direction: column-reverse;
     }
 
@@ -1374,7 +1436,7 @@ td:hover {
     }
 
     .floor-items {
-        margin-bottom: 8rem;
+        margin: 0 6rem 8rem 6rem;
     }
 
     .active-map-floor {

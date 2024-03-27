@@ -19,7 +19,7 @@
 ?>
 
 <div class="main-container">
-    <h1><?php echo ucfirst(strtolower($session_name))?> <span>(<?php echo mysqli_num_rows($item_result)?>)</span></h1>
+    <h1><?php echo ucfirst(strtolower($session_name))?> <span id="item-counter">(<?php echo mysqli_num_rows($item_result)?>)</span></h1>
     <div class="main-container-action">
 
     </div>

@@ -155,4 +155,12 @@
             $('.floor_01').removeClass('active-floor-btn');
         }
     }
+
+    $('.map_floor_view').on('mousedown', function() {
+        $(this).css('cursor', 'grabbing');
+    });
+    
+    $('.map_floor_view').on('mouseup', function() {
+        $(this).css('cursor', 'grab');
+    });
 })(jQuery);

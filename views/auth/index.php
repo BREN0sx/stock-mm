@@ -73,9 +73,22 @@ if(isset($_COOKIE['token'])){
         <link rel="stylesheet" href="../../src/css/styles.css">
   	</head>
   	<body>
-        <style>
-            
-        </style>
+
+    <!-- LOADER -->
+
+    <div class="loader"><div class="spin"></div></div>
+    <script>
+        window.addEventListener("load", () => {
+            const loader = document.querySelector(".loader");
+            loader.classList.add("loader-hidden");
+
+            loader.addEventListener("transitionend", () => {
+                if (document.body.contains(loader)) {
+                    document.body.removeChild(loader);
+                }
+            });
+        });
+    </script>
         
     	<div class="login-container">
             <div class="login-section">

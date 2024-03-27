@@ -2603,93 +2603,110 @@
     </section>
 </section>
 
+<!-- TOOLTIP SEARCHER -->
+
+<?php require '../../src/structures/loaders/place_tooltip_searcher.php'?>
 <script>
-$(document).ready(function(){
- load_data();
+   $(document).ready(function() {
+      $('[id^="map_"].filmap').hover(function() {
+         var id = this.id.replace('map_', '');
+         id = id.replace(/^0+/, '');
 
- function load_data(query)
- {
-  $.ajax({
-   url:"../../src/structures/loaders/item_locate_searcher.php",
-   method:"POST",
-   data:{
-    query: query
-    },
-   success:function(data)
+         var placeName = places[id];
+         if (!placeName) return;
+
+         var tooltipInstance = tippy(this, { content: placeName });
+      });
+   });
+</script>
+
+<!-- ITEM PLACE SEARCHER -->
+
+<script>
+   $(document).ready(function(){
+   load_data();
+
+   function load_data(query)
    {
-      data = data.split(",");
-      
-      if (data[0] == "") return removeObjectsPulse();
+      $.ajax({
+         url:"../../src/structures/loaders/item_locate_searcher.php",
+         method:"POST",
+         data:{
+            query: query
+         },
+         success:function(data)
+         {
+            data = data.split(",");
+            if (data[0] == "") return removeObjectsPulse();
+            let floor = [1, '#map_floor_01', "0 0 11197 5593", "15", "70", "10000"];
 
-     let floor = [1, '#map_floor_01', "0 0 11197 5593", "15", "70", "10000"];
+            if (parseInt(data[2]) >= 25) {
+               floor = [2, '#map_floor_02', "0 0 65266 32596", "100", "450", "40000"];
+            }
+            
+            var polygon = $(floor[1]+' svg').find(data[1]);
+            var coordinates = polygon.attr('points');
+            
+            removeObjectsPulse();
+            
+            $(floor[1]+' svg').find(data[1]).parent('a').each(function() {
+               var parentA = $(this);
+               var href = parentA.attr('href');
 
-      if (parseInt(data[2]) >= 25) {
-         floor = [2, '#map_floor_02', "0 0 65266 32596", "100", "450", "40000"];
-      }
-      
-      var polygon = $(floor[1]+' svg').find(data[1]);
-      var coordinates = polygon.attr('points');
-      
-      removeObjectsPulse();
-      
-      $(floor[1]+' svg').find(data[1]).parent('a').each(function() {
-         var parentA = $(this);
-         var href = parentA.attr('href');
+               if (href && !href.includes("&item=")) {
+                  var newHref = href + (href.includes('?') ? '&' : '?') + 'item=' + data[0];
+                  parentA.attr('href', newHref);
+               }
+            });
 
-         if (href && !href.includes("&item=")) {
-            var newHref = href + (href.includes('?') ? '&' : '?') + 'item=' + data[0];
-            parentA.attr('href', newHref);
+            var squareElement = '<svg id="map_pulse" style="overflow: auto;"><polygon points="'+coordinates+'" fill="none" stroke="#FF1212" stroke-width="'+floor[3]+'" stroke-dasharray="'+floor[4]+'" stroke-dashoffset="0"> ' +
+            '<animate attributeName="opacity" from="1" to="0.1" dur="1.5s" begin="0.2s" repeatCount="indefinite"/>' +
+            '<animate attributeName="stroke-dashoffset" from="0" to="'+floor[5]+'" dur="15s" begin="0s" repeatCount="indefinite"></animate>'+
+            '</rect>';
+
+            polygon.before(squareElement);
+
+            setFloor(floor[0])
+
+            function setFloor(number) {
+            if (number === 1) {
+                  $('.map_floor_01').addClass('active-map-floor');
+                  $('.map_floor_02').removeClass('active-map-floor');
+         
+                  $('.floor_01').addClass('active-floor-btn');
+                  $('.floor_02').removeClass('active-floor-btn');
+            } else {
+                  $('.map_floor_02').addClass('active-map-floor');
+                  $('.map_floor_01').removeClass('active-map-floor');
+         
+                  $('.floor_02').addClass('active-floor-btn');
+                  $('.floor_01').removeClass('active-floor-btn');
+            }
+            }
+
+            function removeObjectsPulse() {
+               $('#map_pulse').remove();
+
+               $('svg a').each(function() {
+                  var href = $(this).attr('href');
+
+                  if (href && href.includes("&item=")) {
+                     var newHref = href.replace(/&item=[0-9]*/g, '');
+                     $(this).attr('href', newHref);
+                  }
+               });
+            }
          }
       });
-
-      var squareElement = '<svg id="map_pulse" style="overflow: auto;"><polygon points="'+coordinates+'" fill="none" stroke="#FF1212" stroke-width="'+floor[3]+'" stroke-dasharray="'+floor[4]+'" stroke-dashoffset="0"> ' +
-      '<animate attributeName="opacity" from="1" to="0.1" dur="1.5s" begin="0.2s" repeatCount="indefinite"/>' +
-      '<animate attributeName="stroke-dashoffset" from="0" to="'+floor[5]+'" dur="15s" begin="0s" repeatCount="indefinite"></animate>'+
-      '</rect>';
-
-      polygon.before(squareElement);
-
-      setFloor(floor[0])
-
-      function setFloor(number) {
-        if (number === 1) {
-            $('.map_floor_01').addClass('active-map-floor');
-            $('.map_floor_02').removeClass('active-map-floor');
-    
-            $('.floor_01').addClass('active-floor-btn');
-            $('.floor_02').removeClass('active-floor-btn');
-        } else {
-            $('.map_floor_02').addClass('active-map-floor');
-            $('.map_floor_01').removeClass('active-map-floor');
-    
-            $('.floor_02').addClass('active-floor-btn');
-            $('.floor_01').removeClass('active-floor-btn');
-        }
-      }
-
-      function removeObjectsPulse() {
-         $('#map_pulse').remove();
-
-         $('svg a').each(function() {
-            var href = $(this).attr('href');
-
-            if (href && href.includes("&item=")) {
-               var newHref = href.replace(/&item=[0-9]*/g, '');
-               $(this).attr('href', newHref);
-            }
-         });
-      }
    }
-  });
- }
 
- $('#search_locate_item').keyup(function(){
-  var search = $(this).val();
-  if(search != '') {
-   load_data(search);
-  }
- });
-});
+      $('#search_locate_item').keyup(function(){
+         var search = $(this).val();
+         if(search != '') {
+            load_data(search);
+         }
+      });
+   });
 </script>
 
 <script src="../../src/js/setFloor.js"></script>

@@ -31,6 +31,8 @@ if(isset($_COOKIE['token'])){
     <meta property="og:title" content="Stock Manager - EEEP Manoel Mano">
     <meta property="og:image" content="https://i.imgur.com/nNLnE7P.jpeg">
 
+    <script src="https://unpkg.com/@popperjs/core@2.10.0/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6.3.0/dist/tippy-bundle.umd.min.js"></script>
     <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.5.0/dist/svg-pan-zoom.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
@@ -42,15 +44,27 @@ if(isset($_COOKIE['token'])){
     <link rel="stylesheet" href="../../src/css/styles.css">
 </head>
 <body>
-<?php 
-    $categoria = $_GET['room'];
-?>
-        <nav class="navbar">
-            <div class="nav-logo"><a href="../map"><img src="../../src/assets/LogoMM_Stock_White.svg" alt="LabStock"></a></div>
-            
-            <div class="logout-user"> 
-                <span class="material-symbols-outlined">logout</span>
-            </div>
-        </nav>
-        <script src="../../src/js/disconnectUser.js"></script>
+    <!-- LOADER -->
+
+    <div class="loader"><div class="spin"></div></div>
+    <script>
+        window.addEventListener("load", () => {
+            const loader = document.querySelector(".loader");
+            loader.classList.add("loader-hidden");
+
+            loader.addEventListener("transitionend", () => {
+                if (document.body.contains(loader)) {
+                    document.body.removeChild(loader);
+                }
+            });
+        });
+    </script>
+
+    <nav class="navbar">
+        <div class="nav-logo"><a href="../map"><img src="../../src/assets/LogoMM_Stock_White.svg" alt="LabStock"></a></div>
+        
+        <div class="logout-user"> 
+            <span class="material-symbols-outlined">logout</span>
         </div>
+    </nav>
+    <script src="../../src/js/disconnectUser.js"></script>

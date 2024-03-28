@@ -1,3 +1,5 @@
+/* DESATUALIZADO */
+
 CREATE DATABASE IF NOT EXISTS `storage`;
 USE `storage`
 

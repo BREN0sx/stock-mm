@@ -7,6 +7,15 @@ else require '../../src/includes/_db.php';
 
     if ($_GET['tab'] != 2) return;
 
+    if (isset($_COOKIE['token'])) {
+        $user_decoder = json_decode(base64_decode(explode('.', $_COOKIE['token'])[1]));
+        $id_user = $user_decoder->data->id_user;
+        $admin_user = $user_decoder->data->admin_user;
+        if ($admin_user != 1) return;
+    } else {
+        return;
+    }
+
     $product_query = "SELECT * FROM item WHERE id_item = '$id'";
     $product_result = mysqli_query($db, $product_query);
     $item = mysqli_fetch_assoc($product_result);
@@ -141,6 +150,7 @@ else require '../../src/includes/_db.php';
         </div>
 
         <input type="hidden" name="id_place" value="<?php echo $place_id; ?>">
+        <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
         <input type="hidden" name="action" value="item_edit">
         <input type="hidden" name="id" value="<?php echo $id; ?>">
         <button type="submit" class="form-btn btn btn-success pEdit"><span class="material-symbols-rounded">check</span>Salvar</button>

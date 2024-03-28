@@ -7,6 +7,13 @@ else require '../../src/includes/_db.php';
 
     if ($_GET['tab'] != 3) return;
 
+    if (isset($_COOKIE['token'])) {
+        $admin_user = json_decode(base64_decode(explode('.', $_COOKIE['token'])[1]))->data->admin_user;
+        if ($admin_user != 1) return;
+    } else {
+        return;
+    }
+
     $product_query = "SELECT * FROM item WHERE id_item = '$id'";
     $product_result = mysqli_query($db, $product_query);
     $products = mysqli_fetch_assoc($product_result);

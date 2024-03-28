@@ -1,5 +1,16 @@
 <?php
     $place_id = $_GET['room'];
+    $role = true;
+
+    if (isset($_COOKIE['token'])) {
+        $user_decoder = json_decode(base64_decode(explode('.', $_COOKIE['token'])[1]));
+        $id_user = $user_decoder->data->id_user;
+        $admin_user = $user_decoder->data->admin_user;
+        
+        if ($admin_user != 1) $role = false;
+    } else {
+        $role = false;
+    }
     
     $place_query = "SELECT name_place FROM places WHERE id_place = $place_id";
     $place_result = mysqli_query($db, $place_query);
@@ -8,6 +19,9 @@
 ?>
 
 <div class="add-modal" id="modal_add" style="display: none;">
+    <?php
+        if ($role == true) {
+    ?>
     <form id="form-add" action="../../src/includes/_functions.php" method="POST"  enctype="multipart/form-data">
 
 <div class="add-section">
@@ -84,10 +98,12 @@
         </div>
 
         <input type="hidden" name="id_place" value="<?php echo $place_id; ?>">
+        <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
 
         <input type="hidden" name="action" value="item_add">
         <button class="form-btn pAdd" type="submit" class="btn btn-success"><span class="material-symbols-rounded">check</span>Adicionar</button>
     </div>
 </div>
 </form>
+<?php } ?>
 </div>

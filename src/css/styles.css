@@ -107,6 +107,7 @@ h1 {
     height: 7rem;
     padding: 0 3rem;
     justify-content: space-between;
+    user-select: none;
 }
 .nav-logo {
     color: #ffff;
@@ -116,6 +117,57 @@ h1 {
 .nav-logo img {
     width: 10.5rem;
 }
+
+/* USER PROFILE */
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.user-info {
+    margin-right: .3rem;
+}
+.user-name {
+    font-size: 11pt;
+    font-weight: 600;
+    margin: 0;
+    color: #fff;
+}
+.user-role {
+    font-size: 10pt;
+    margin: 0;
+    color: #ffffff9c;
+}
+.user-profile img {
+    height: 2.6rem;
+    width: 2.6rem;
+    border-radius: .7rem;
+    margin-right: .5rem;
+}
+.user-profile span {
+    font-size: 15pt;
+    color: #fff;
+}
+
+.logout-user p {
+    display: none;
+}
+
+.user-info:hover {
+    opacity: .8;
+}
+
+.user-profile span:hover {
+    opacity: .7;
+}
+
+.user-profile span.active {
+    transform: rotateY(180deg);
+}
+
+/*  */
 
 .nav-btn {
     color: #ababab;
@@ -140,18 +192,10 @@ h1 {
     background: var(--button-bg-color) !important;
     border: none;
 }
-.nav-user {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
+
 .active-user-nav {
     display: flex;
     align-items: center;
-}
-.nav-user span {
-    color: #C2C2C2;
-    margin-right: .5rem
 }
 .expand-user-nav {
     position: absolute;
@@ -163,9 +207,6 @@ h1 {
     justify-content: center;
     align-items: center;
     transform: translate(-6px, 37px);
-}
-.nav-user:hover {
-    cursor: pointer;
 }
 .user-avatar {
     width: 30px;
@@ -773,68 +814,6 @@ input[type="date"] {
     cursor: pointer;
     border-radius: 3px;
 }
-.nav-user1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.nav-user1 p {
-    margin-right: 1rem;
-    font-size: 18pt;
-    color: #00000082;
-}
-.download-btn:hover {
-    opacity: .7;
-    cursor: pointer;
-}
-.nav-user1 span {
-    font-size: 11pt;
-}
-.display-user-nav1 {
-    margin-right: .1rem;
-    margin-left: .1rem;
-}
-.display-user-nav1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.2rem;
-}
-.ativo {
-    background: var(--button-bg-color);
-    color: var(--button-text-color);
-    display: flex;
-    border-radius: 5rem;
-    justify-content: center;
-    align-items: center;
-}
-.ativo span {
-    margin-left: 0.2rem;
-    margin-right: 0.3rem;
-}
-.inativo {
-    color: #ababab;
-    display: flex;
-    border-radius: 5rem;
-    justify-content: center;
-    align-items: center;
-}
-.inativo:hover img {
-    filter: grayscale(1) brightness(.7);
-    cursor: pointer;
-}
-.inativo span {
-    margin-left: 0.2rem;
-    margin-right: 0.3rem;
-}
-.inativo img {
-    filter: grayscale(1) brightness(0.5);
-}
-.set-resp {
-    background: transparent;
-    border: none;
-    padding: 0;
-}
 
 .add-modal {
     /* display: flex; */
@@ -1159,9 +1138,9 @@ td:hover {
       position: absolute;
       border: solid 1px #c9c7c7;
       padding: .5rem;
-      top: 37px;
+      top: 25px;
       width: 220px;
-      right: -100px;
+      right: -55px;
       background-color: #fff;
       border-radius: 10px;
       overflow: hidden;
@@ -1278,10 +1257,17 @@ td:hover {
 }
 
 .logout-user {
+    display: none;
+    font-size: 30px;
     color: #fff;
     cursor: pointer;
+    margin-left: 1rem;
+    font-weight: 500;
 }
-
+.logout-user.active {
+    display: flex;
+    align-items: center;
+}
 
 /* LOGIN */
 
@@ -1387,6 +1373,23 @@ td:hover {
 
     .logout-user span {
         font-size: 35pt;
+    }
+
+    /* USER PROFILE */
+
+    .user-profile img {
+        border-radius: 1.5rem;
+        height: 5.5rem;
+        width: 5.5rem;
+    }
+    .user-profile span {
+        font-size: 40pt;
+    }
+    .user-info {
+        display: none;
+    }
+    .logout-user p {
+        display: block;
     }
 
     /*  */

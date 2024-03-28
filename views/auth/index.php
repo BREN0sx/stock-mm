@@ -40,8 +40,10 @@ if(isset($_COOKIE['token'])){
                                 'nbf'   =>  time(),
                                 'exp'   =>  time() + 3600,
                                 'data'  => array(
-                                    'user_id'   =>  $data['user_id'],
-                                    'user_name' =>  $data['user_name']
+                                    'id_user'   =>  $data['id_user'],
+                                    'name_user' =>  $data['name_user'],
+                                    'profile_user' =>  $data['profile_user'],
+                                    'admin_user' =>  $data['admin_user']
                                 )
                             ),
                             $key,

@@ -40,9 +40,10 @@ function item_add(){
     $about_item = isset($_POST['about_item']) ? $_POST['about_item'] : null;
     $price_item = isset($_POST['price_item']) ? $_POST['price_item'] : null;
     $got_item = isset($_POST['got_item']) ? $_POST['got_item'] : null;
+    $user_item = $_POST['id_user'];
 
     $consulta="INSERT INTO item (name_item, ci_item, about_item, price_item, image_item, got_item, date_item, id_status, id_place, id_category, id_user)
-    VALUES ('$name_item', '$ci_item', '$about_item', '$price_item', '$image_product', '$got_item', '$date_item', '$id_status', '$id_place', '$id_category', '1');" ;
+    VALUES ('$name_item', '$ci_item', '$about_item', '$price_item', '$image_product', '$got_item', '$date_item', '$id_status', '$id_place', '$id_category', '$user_item');" ;
 
     mysqli_query($db, $consulta);
 
@@ -84,8 +85,9 @@ function item_edit(){
     }
 
     $date_item = date('Y-m-d');
+    $user_item = $_POST['id_user'];
 
-    $consulta="UPDATE item SET name_item = '$name_item', about_item = '$about_item', ci_item = '$ci_item', price_item = '$price_item', got_item = '$got_item', date_item = '$date_item', id_status = '$id_status', id_place = '$id_place', id_category = '$id_category' WHERE id_item = $id";
+    $consulta="UPDATE item SET name_item = '$name_item', about_item = '$about_item', ci_item = '$ci_item', price_item = '$price_item', got_item = '$got_item', date_item = '$date_item', id_status = '$id_status', id_place = '$id_place', id_category = '$id_category', id_user = '$user_item' WHERE id_item = $id";
     mysqli_query($db, $consulta);
 
     if (mysqli_errno($db) == 0) {

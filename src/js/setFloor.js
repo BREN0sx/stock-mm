@@ -63,9 +63,9 @@
 
     function setViewerMap(mapCfg) {
         if (mapCfg == 1 ) {
-            mapCfg = ["#svg_map_01", 281, 127, 3.5, '70rem', '100vw', 115, 50, 1.2]
+            mapCfg = ["#svg_map_01", 281, 90, 2.7, '65rem', '100vw', 115, 50, 1.2]
         } else {
-            mapCfg = ["#svg_map_02", 281, 127, 3.5, '70rem', '100vw', 115, 50, 1.2]
+            mapCfg = ["#svg_map_02", 281, 90, 2.7, '65rem', '100vw', 115, 50, 1.2]
         }
         if (window.matchMedia("(orientation: portrait)").matches) {
             panZoomInstance = svgPanZoom(mapCfg[0], {

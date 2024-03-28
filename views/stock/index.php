@@ -29,9 +29,8 @@
     
     <div class="group-interaction">
     <div class="dropdown">
-            <p id="pdf-creator-btn" class="material-symbols-outlined" title="Gerar documento" onclick="toggle()">file_open</p>
-
-        <ul class="dropdown-list">
+        <p id="pdf-creator-btn" class="material-symbols-outlined" title="Gerar documento" onclick="toggle()">file_open</p>
+        <ul class="dropdown-list" id="dropdown-export">
           <li class="dropdown-list-item" id="export_pdf_1">
             <span class="material-symbols-outlined">deployed_code_update</span>
               Todas os ambientes
@@ -49,8 +48,13 @@
         </ul>
       </div>
 
-    <a class="main-btn _modal_add_open"><span class="material-icons">add</span>Novo item</a> 
-    </div>
+      <?php 
+        if ($admin_user == 1) {
+      ?>
+        <a class="main-btn _modal_add_open"><span class="material-icons">add</span>Novo item</a> 
+      <?php } ?>
+      </div>
+      
     </div>
 
     <div class="products-container">
@@ -88,15 +92,9 @@
 
 <script>
   let profileDropdownList = document.querySelector(".dropdown-list");
-  let btn = document.querySelector("#pdf-creator-btn");
-
   let classList = profileDropdownList.classList;
 
   const toggle = () => classList.toggle("active");
-
-  window.addEventListener("click", function (e) {
-    if (!btn.contains(e.target)) classList.remove("active");
-  });
 </script>
 
 <script src="../../src/js/viewItem.js"></script>

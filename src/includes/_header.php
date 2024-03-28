@@ -13,6 +13,11 @@ $key = 'ayNf@QY7sF4Lp@83s0pX6xRqEoPkCj2gT2pKtAqVb8lZkVn@q3fAs4hG9oQvWmX';
 
 if(isset($_COOKIE['token'])){
 	$decoded = JWT::decode($_COOKIE['token'], new Key($key, 'HS256'));
+    
+    $id_user = $decoded->data->id_user;
+    $name_user = $decoded->data->name_user;
+    $profile_user = $decoded->data->profile_user;
+    $admin_user = $decoded->data->admin_user;
 } else {
 	header('location: ../auth');
 }
@@ -62,9 +67,31 @@ if(isset($_COOKIE['token'])){
 
     <nav class="navbar">
         <div class="nav-logo"><a href="../map"><img src="../../src/assets/LogoMM_Stock_White.svg" alt="LabStock"></a></div>
-        
-        <div class="logout-user"> 
-            <span class="material-symbols-outlined">logout</span>
+
+        <div class="user-profile" onclick="toggleProfile()">
+            <img src="<?php echo $profile_user?>" alt="">
+            <div class="user-info">
+                <p class="user-name">
+                    <?php echo $name_user?>
+                </p>
+                <p class="user-role">
+                    <?php echo $admin_user == 1 ? "Admin" : "Viewer" ?>
+                </p>
+            </div>
+            <div class="logout-user"> 
+                <span class="material-symbols-outlined">logout</span>
+                <p>Sair</p>
+            </div>
         </div>
     </nav>
+
+    <script>
+        let profileLogout = document.querySelector(".logout-user");
+
+        let classListProfile = profileLogout.classList;
+
+        const toggleProfile = () => {
+            classListProfile.toggle("active");
+        }
+    </script>
     <script src="../../src/js/disconnectUser.js"></script>

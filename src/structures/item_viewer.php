@@ -1,6 +1,10 @@
 <?php
     if (isset($_GET['by'])) require '../../src/includes/_db.php';
     else require '../../src/includes/_db.php';
+
+    if (isset($_COOKIE['token'])) {
+        $admin_user = json_decode(base64_decode(explode('.', $_COOKIE['token'])[1]))->data->admin_user;
+    }
     
     $item_id = "";
     if(isset($_GET['item'])) {
@@ -94,14 +98,18 @@
                     </div>
                 </div>
             </div>
-        </div>    
-
+        </div> 
+        
+        <?php 
+            if ($admin_user == 1) {
+        ?>
         <div class="viewer-actions">
             <div class="actions-itens">
                     <a class="_modal_edit_open" id="type_tab_2"><span class="material-icons">mode_edit</span></a>
                     <a class="_modal_delete_open" id="type_tab_3"><span class="material-icons">delete</span></a>
             </div>
         </div>
+        <?php } ?>
     </div>
 </div>
 </form>

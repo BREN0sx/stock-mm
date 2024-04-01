@@ -33,7 +33,7 @@ if(isset($_COOKIE['token'])){
 
                 if ($data) {
                     if ($data['pass_user'] === $user_pass) {
-                        
+
                         $token = JWT::encode(
                             array(
                                 'iat'   =>  time(),

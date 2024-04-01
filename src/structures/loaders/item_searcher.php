@@ -21,8 +21,6 @@ if(isset($_POST["query"])) {
 }
 $result = mysqli_query($db, $query);
 
-echo "<script>document.getElementById('item-counter').innerText = '(" . mysqli_num_rows($result) . ")';</script>";
-
 if(mysqli_num_rows($result) > 0) {
  $output .= '
  <table>

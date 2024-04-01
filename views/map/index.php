@@ -2615,7 +2615,17 @@
          var placeName = places[id];
          if (!placeName) return;
 
-         var tooltipInstance = tippy(this, { content: placeName });
+         var tooltipInstance = tippy(this, { 
+            followCursor: true,
+            arrow: true,
+            placement: 'top',
+            delay: 5,
+            distance: 10,
+            allowHTML: true,
+            theme: 'custom',
+            ignoreAttributes: true,
+            content: placeName
+          });
       });
    });
 </script>

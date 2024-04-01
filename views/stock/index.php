@@ -97,6 +97,39 @@
   const toggle = () => classList.toggle("active");
 </script>
 
+<style>
+  .tippy-tooltip.custom-theme {
+    background-color: white;
+    color: black;
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1),0px 2px 4px 0px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1),0px -2px 4px 0px rgba(0,0,0,0.1),0px -2px 4px 0px rgba(0,0,0,0.1);
+    &[data-placement^='top'] .tippy-arrow {
+      border-top-color: white;
+    }
+  }
+</style>
+
+<script>
+  $(document).ready(function() {
+    $(document).on('mouseenter', 'td[id^="status_"]', function() {
+         var tooltipInstance = tippy(this, { 
+            followCursor: false,
+            arrow: true,
+            placement: 'top',
+            delay: 5,
+            distance: -5,
+            allowHTML: true,
+            theme: 'custom',
+            ignoreAttributes: true,
+            content(reference) {
+            const title = reference.getAttribute('title');
+            reference.removeAttribute('title');
+            return title;
+        },
+          });
+      });
+   });
+</script>
+
 <script src="../../src/js/viewItem.js"></script>
 <script src="../../src/js/fileImport.js"></script>
 <script src="../../src/js/modal.js"></script>

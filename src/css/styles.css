@@ -167,6 +167,17 @@ h1 {
     transform: rotateY(180deg);
 }
 
+/* TOOLTIP */
+
+.tippy-tooltip.custom-theme {
+    font-size: 9pt;
+    background-color: #00853B;
+      
+    &[data-placement^='top'] .tippy-arrow {
+      border-top-color: #00853B;
+    }
+  }
+
 /*  */
 
 .nav-btn {
@@ -1288,6 +1299,7 @@ td:hover {
     justify-content: center;
     align-items: center;
     width: 30%;
+    user-select: none;
 }
 .login-section:last-child {
     display: flex;

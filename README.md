@@ -1,5 +1,5 @@
  <div align="center">
-  <img src="https://i.imgur.com/PaSylrv.png" alt="Stock Manager Logo" width="500" height="auto">
+  <img src="https://i.imgur.com/v4D3Cao.png" alt="Stock Manager Logo" width="500" height="auto">
 </div>
 
 ## Stock Manager - Sistema de Gerenciamento de Inventário Instituicional

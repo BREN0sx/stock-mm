@@ -18,28 +18,17 @@ Este sistema foi desenvolvido com o objetivo de facilitar e agilizar o processo 
 * [x] **Atualização de Informações:** Possibilita a atualização das informações dos bens cadastrados.
 * [x] **Relatórios:** Gera relatórios sobre o patrimônio da instituição, incluindo inventário de bens, movimentações, entre outros.
 
-## Tecnologias Utilizadas
+### 1.3 Tecnologias Utilizadas
 
 - **Frontend:** HTML5, CSS3, JavaScript
 - **Backend:** PHP
 - **Banco de Dados:** MySQL
 - **Autenticação:** JWT (JSON Web Tokens) para autenticação de usuários
 
-## Acesso Online
+### 1.4 Acesso Online
 
-O Sistema de Tombamento da EEEP Manoel Mano está disponível para acesso online em [https://stock.eeepmanoelmano.com.br/](https://stock.eeepmanoelmano.com.br/).
+Disponível para acesso online em [https://stock.eeepmanoelmano.com.br/](https://stock.eeepmanoelmano.com.br/).
 
-## Como Usar
+## Notas Adicionais
 
-1. Acesse o sistema através do navegador web utilizando o link fornecido.
-2. Faça login utilizando suas credenciais.
-3. Navegue pelas diferentes funcionalidades do sistema através do menu.
-4. Cadastre novos bens, consulte informações, gere relatórios e controle as movimentações conforme necessário.
-
-## Contribuindo
-
-Contribuições são bem-vindas! Sinta-se à vontade para enviar sugestões, relatar problemas ou enviar pull requests para melhorar este sistema.
-
-## Licença
-
-Este projeto está licenciado sob a [MIT License](LICENSE).
+Este projeto é uma implementação real em um site institucional da EEEP Manoel Mano, destinado à gestão de bens patrimoniais. Qualquer semelhança com outros sistemas é coincidência. Não é destinado a fins comerciais e seu uso é restrito a usuários autorizados da instituição.

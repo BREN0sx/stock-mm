@@ -10,7 +10,7 @@
 <div class="map-container">
 
 <div class="map_floor_view map_floor_01 active-map-floor" id="map_floor_01">
-   <svg id="svg_map_01" height="28rem" width="75vw" viewBox="0 0 11197 5593"
+   <svg id="svg_map_01" viewBox="0 0 11197 5593"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
    <defs>
@@ -1726,7 +1726,7 @@
 </div>
 
 <div class="map_floor_view map_floor_02" id="map_floor_02">
-    <svg id="svg_map_02" height="28rem" width="75vw" viewBox="0 0 65266 32596"
+    <svg id="svg_map_02" viewBox="0 0 65266 32596"
      xmlns:xlink="http://www.w3.org/1999/xlink"
      xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
      <defs>

@@ -153,7 +153,10 @@ else require '../../src/includes/_db.php';
         <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
         <input type="hidden" name="action" value="item_edit">
         <input type="hidden" name="id" value="<?php echo $id; ?>">
-        <button type="submit" class="form-btn btn btn-success pEdit"><span class="material-symbols-rounded">check</span>Salvar</button>
+        <div class="btn-section">
+            <button type="submit" class="form-btn btn btn-success pEdit"><span class="material-symbols-rounded">check</span>Salvar</button>
+            <div class="form-btn btn btn-secondary pCancel" id="type_tab_1">Cancelar</div>
+        </div>
     </div>
 </div>
 </form>

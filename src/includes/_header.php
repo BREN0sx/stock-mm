@@ -35,6 +35,7 @@ if(isset($_COOKIE['token'])){
     <meta property="og:site_name" content="Stock Manager">
     <meta property="og:title" content="Stock Manager - EEEP Manoel Mano">
     <meta property="og:image" content="https://i.imgur.com/nNLnE7P.jpeg">
+
     <script src="https://unpkg.com/popper.js@1"></script>
     <script src="https://unpkg.com/tippy.js@5"></script>
     <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>

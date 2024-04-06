@@ -51,6 +51,10 @@
             var newUrl = currentUrl + '&tab=' + numeroTab;
         }
 
+        if (numeroTab == 1) {
+            return window.location.href = currentUrl.split('&tab=')[0];
+        }
+
         if (numeroTab == 2) var loca = ["item_edit", "modal_edit"];
         else var loca = ["item_remove", "modal_delete"];
 

@@ -1,6 +1,5 @@
 <?php
-    if (isset($_GET['by'])) require '../../src/includes/_db.php';
-    else require '../../src/includes/_db.php';
+    require '../../src/includes/_db.php';
 
     if (isset($_COOKIE['token'])) {
         $admin_user = json_decode(base64_decode(explode('.', $_COOKIE['token'])[1]))->data->admin_user;
@@ -42,13 +41,15 @@
 
 <div class="add-section">
     <div class="add-container">
-        <div class="add-label">
-            <h1><?php echo $item['name_item']?></h1>
-            <span class="material-symbols-rounded _modal_view_close">close</span>
+        <div class="add-top">
+            <div class="add-label">
+                <h1><?php echo $item['name_item']?></h1>
+                <span class="material-symbols-rounded _modal_view_close">close</span>
+            </div>
+            <div class="viewer-about"><?php echo $item['about_item'];?></div>
         </div>
-        <div class="viewer-about"><?php echo $item['about_item'];?></div>
 
-        <div class="viewer-container">
+        <div class="viewer-container" style="<?php echo ($admin_user == 1) ? '' : 'margin-bottom: 70vh;' ?>">
             <div class="viewer-image">
                 <?php
                     $imageData = $item['image_item'];

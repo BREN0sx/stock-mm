@@ -1,11 +1,12 @@
 <?php
-require_once ("_db.php");
+require("_db.php");
 require('fpdf181/fpdf.php');
 date_default_timezone_set('america/sao_paulo');
 header ('Content-type: text/html; charset=ISO-8859-1');
 
 $type_export = $_GET['type'];
 $room_export = $_GET['room'];
+$prefix_type = 'SERVÍVEIS';
 
 if (!isset($type_export)) $type_export = 1;
 if (!isset($room_export)) $room_export = null;
@@ -40,9 +41,11 @@ while ($row_session = mysqli_fetch_assoc($session_result)) {
     if ($type_export == 2) {
         if ($session_p !== $room_export) continue;
         $product_query = "SELECT * FROM item WHERE id_place = $room_export AND id_status != 0";
+        $prefix_type = mb_strtoupper($session_name, 'UTF-8');
     }
     if ($type_export == 3) {
         $product_query = "SELECT * FROM item WHERE id_place = $session_p AND id_status = 0";
+        $prefix_type = 'INSERVÍVEIS';
     }
     
     $product_result = mysqli_query($db, $product_query);
@@ -50,10 +53,6 @@ while ($row_session = mysqli_fetch_assoc($session_result)) {
     if (mysqli_num_rows($product_result) == 0 && $type_export == 3) continue;
   
     $pdf->AddPage("L");
-
-    $resp_query = "SELECT * FROM users WHERE active_user = 1 LIMIT 1";
-    $resp_result = mysqli_query($db, $resp_query);
-    $resp_name = mysqli_fetch_assoc($resp_result)['name_user'];
 
     $pdf->Image('../assets/pdf/logo.png', 75, 15, 60);
             
@@ -67,22 +66,23 @@ while ($row_session = mysqli_fetch_assoc($session_result)) {
 
     $mid_x = $pdf->GetPageWidth() / 2;
     $text = utf8_decode('INVENTÁRIO SINTÉTICO DE BENS MÓVEIS - ' . ($type_export == 3 ? 'INSENSÍVEIS' : 'SERVÍVEIS'));
-    $pdf->Text($mid_x - ($pdf->GetStringWidth($text) / 2),55, $text);
+    $pdf->Text($mid_x - ($pdf->GetStringWidth($text) / 2),48, $text);
 
     $pdf->Ln(52);
 
     $pdf->SetFont('Arial', 'B', 11);
 
     $mid_x = $pdf->GetPageWidth() / 2;
-    $text = utf8_decode('AMBIENTE - ' . mb_strtoupper($session_name, 'UTF-8'));
-    $pdf->Text($mid_x - ($pdf->GetStringWidth($text) / 2),65, $text);
+    $text = utf8_decode('' . mb_strtoupper($session_name, 'UTF-8') . ' (' . mysqli_num_rows($product_result) . ')');
+    $pdf->SetTextColor(41, 129, 12);
+    $pdf->Text($mid_x - ($pdf->GetStringWidth($text) / 2),55, $text);
 
     $pdf->SetFillColor(0, 0, 0);
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetTextColor(255, 255, 255);
 
-    $pdf->Ln(4);
-    $pdf->SetFont('Arial', 'B', 8);
+    $pdf->Ln(-5);
+    $pdf->SetFont('Arial', 'B', 9);
     $pdf->Cell(30, 7, utf8_decode('TOMBAMENTO'), 1, 0, 'C', 1);
     $pdf->Cell(150, 7, utf8_decode('ESPECIFICAÇÃO DETALHADA'), 1, 0, 'C', 1);
     $pdf->Cell(30, 7, utf8_decode('AQUISIÇÃO EM'), 1, 0, 'C', 1);
@@ -132,8 +132,8 @@ while ($row_session = mysqli_fetch_assoc($session_result)) {
     }
 }
 
-$filename = "Tomb_MM_" . date("d.m.Y") . ".pdf";
-$pdf->Output($filename, "I");
+$filename = "TOMB_MM_" . $prefix_type . ' [' . date("d.m.Y") . "].pdf";
+$pdf->Output(utf8_decode($filename), "D");
 
-/* header("Location: ../views/index.php"); */
+header("Location: ../views/index.php");
 ?>

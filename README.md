@@ -27,7 +27,7 @@ Este sistema foi desenvolvido com o objetivo de facilitar e agilizar o processo 
 
 ### 1.4 Acesso Online
 
-Disponível para acesso online em [https://stock.eeepmanoelmano.com.br/](https://stock.eeepmanoelmano.com.br/).
+[Disponível para acesso online](https://stock.eeepmanoelmano.com.br)
 
 ## Notas Adicionais
 

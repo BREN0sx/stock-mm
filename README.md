@@ -39,5 +39,5 @@ Esta implementação reside em um site institucional da EEEP Manoel Mano, sendo 
 **Stock Manager** - Gerenciamento sistematizado e rastreamento integral dos ativos institucionais.
 
 <div align="center">
-  <img src="assets/readme/page-2.png" alt="page-2" width="1000" height="auto">
+  <img src="https://i.imgur.com/97Extfx.png" alt="page-2" width="1000" height="auto">
 </div>

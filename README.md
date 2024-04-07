@@ -2,7 +2,7 @@
   <img src="https://i.imgur.com/uI0SrjJ.png" alt="Stock Manager Logo" width="500" height="auto">
 </div>
 
-## Stock Manager - Sistema de Gerenciamento de Inventário Instituicional
+## Stock Manager - Gerenciamento sistematizado e rastreamento integral de ativos
 > O Sistema de Tombamento da EEEP Manoel Mano é uma aplicação desenvolvida para gerenciar o processo de tombamento de bens patrimoniais da instituição. O tombamento é um procedimento utilizado para registro e controle dos bens, permitindo o acompanhamento de sua utilização, localização e estado de conservação ao longo do tempo.
 
 ## Visão Geral
@@ -38,10 +38,6 @@ Este sistema foi desenvolvido com o objetivo de facilitar e agilizar o processo 
 ## Notas Adicionais
 
 Esta implementação reside em um site institucional da EEEP Manoel Mano, sendo um sistema dedicado à gestão de bens patrimoniais. Qualquer semelhança com outros sistemas é coincidência. Não é destinado a fins comerciais e seu uso é restrito a usuários autorizados da instituição.
-
----
-
-**Stock Manager** - Gerenciamento sistematizado e rastreamento integral dos ativos institucionais.
 
 <div align="center">
   <img src="https://i.imgur.com/97Extfx.png" alt="page-2" width="1000" height="auto">

@@ -28,7 +28,7 @@
     <div class="add-container">
         <div class="add-label">
             <h1>Adicionar - <?php echo ucfirst(strtolower($place_name))?></h1>
-            <span class="material-symbols-rounded _modal_add_close" >close</span>
+            <div style="display:flex;"><span class="material-symbols-rounded _modal_add_close">close</span><br><c style="font-size: 8pt;position: absolute;margin-top: 1.6rem;margin-left: 1px;user-select:none;">ESC</c></div>
         </div>
         <div class="viewer-container ">
 

@@ -44,7 +44,7 @@
         <div class="add-top">
             <div class="add-label">
                 <h1><?php echo $item['name_item']?></h1>
-                <span class="material-symbols-rounded _modal_view_close">close</span>
+                <div style="display:flex;"><span class="material-symbols-rounded _modal_view_close">close</span><br><c style="font-size: 8pt;position: absolute;margin-top: 1.6rem;margin-left: 1px;user-select:none;">ESC</c></div>
             </div>
             <div class="viewer-about"><?php echo $item['about_item'];?></div>
         </div>
@@ -105,7 +105,7 @@
             if ($admin_user == 1) {
         ?>
         <div class="viewer-actions">
-            <div class="actions-itens">
+            <div class="actions-itens" style="user-select: none;">
                     <a class="_modal_edit_open" id="type_tab_2"><span class="material-icons">mode_edit</span></a>
                     <a class="_modal_delete_open" id="type_tab_3"><span class="material-icons">delete</span></a>
             </div>

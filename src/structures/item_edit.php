@@ -30,11 +30,11 @@ else require '../../src/includes/_db.php';
 <div class="add-section">
     <div class="add-container">
         <div class="add-label">
-            <h1>Editar</h1>
-            <span class="material-symbols-rounded _modal_edit_close" >close</span>
+            <h1>Editar Item</h1>
+            <div style="display:flex;"><span class="material-symbols-rounded _modal_edit_close">close</span><br><c style="font-size: 8pt;position: absolute;margin-top: 1.6rem;margin-left: 1px;user-select:none;">ESC</c></div>
         </div>
 
-<div class="viewer-container ">
+<div class="viewer-container">
             <div class="viewer-image drop-zone">
                 <span class="drop-zone__prompt">Arraste uma imagem ou faça upload</span>
                 <span class="drop-zone__prompt support">JPEG, JPG, PNG, WEBP</span>
@@ -69,6 +69,43 @@ else require '../../src/includes/_db.php';
                     <div class="viewer-text">
                         <label for="about_item" class="title-text form-label">Descrição</label>
                         <input type="text"  id="about_item" name="about_item" class="form-control" placeholder="Insira a descrição" value="<?php echo $item['about_item']; ?>">
+                    </div>
+                    <div class="viewer-text">
+                        <label for="id_place" class="title-text form-label">Ambiente *</label>
+                        <select name="id_place" id="id_place" class="form-control" required>
+                            <?php
+                            $place_query = "SELECT * FROM places";
+                            $place_result = mysqli_query($db, $place_query);
+    
+                            $options = array();
+                            $label_place = array(); 
+
+                            function limitarString($texto, $maxCaracteres = 24) {
+                                $texto = mb_convert_encoding($texto, 'UTF-8', mb_detect_encoding($texto));
+                                return mb_strlen($texto, 'UTF-8') > $maxCaracteres ? mb_substr($texto, 0, $maxCaracteres, 'UTF-8') . "..." : $texto;
+                            }
+    
+                            if ($place_result->num_rows > 0) {
+                                while ($row = $place_result->fetch_assoc()) {
+                                    $category = array(
+                                        'id_place' => $row['id_place'],
+                                        'name_place' => $row['name_place']
+                                    );
+    
+                                    if ($row['id_place'] == $item['id_place']) {
+                                        array_push($label_place, $category);
+                                    } else {
+                                        $options[] = $category;
+                                    }
+                                }
+                                array_unshift($options, ...$label_place);
+    
+                                foreach ($options as $option) {
+                                    echo '<option value="' . $option['id_place'] . '">'. limitarString($option['name_place']) . '</option>';
+                                }
+                            }
+                            ?>
+                        </select>
                     </div>
                 </div>
                 <div class="viewer-section form-section">
@@ -149,7 +186,6 @@ else require '../../src/includes/_db.php';
                     
         </div>
 
-        <input type="hidden" name="id_place" value="<?php echo $place_id; ?>">
         <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
         <input type="hidden" name="action" value="item_edit">
         <input type="hidden" name="id" value="<?php echo $id; ?>">

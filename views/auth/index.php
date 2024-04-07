@@ -115,5 +115,6 @@ if(isset($_COOKIE['token'])){
                             </div>
             </div>
     	</div>
+        <a class="version-deploy" href="https://github.com/BREN0sx/stock-mm">Versão 1.0.0</a>
   	</body>
 </html>

@@ -51,13 +51,13 @@
 
     <div class="add-top">
             <div class="add-label">
-                <h1><?php echo $item['name_item']?></h1>
-                <span class="material-symbols-rounded _modal_delete_close">close</span>
+                <h1 style="color:#cb1b1b;"><?php echo $item['name_item']?></h1>
+                <div style="display:flex;"><span class="material-symbols-rounded _modal_delete_close">close</span><br><c style="font-size: 8pt;position: absolute;margin-top: 1.6rem;margin-left: 1px;user-select:none;">ESC</c></div>
             </div>
             <div class="viewer-about"><?php echo $item['about_item'];?></div>
         </div>
 
-        <div class="viewer-container">
+        <div class="viewer-container" style="user-select: none;">
         <div class="viewer-image" style="border-color: #ff9b9b; background: radial-gradient(transparent, #ff545454);">
                 <?php
                     $imageData = $item['image_item'];

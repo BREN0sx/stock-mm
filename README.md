@@ -6,7 +6,6 @@
 > O Sistema de Tombamento da EEEP Manoel Mano é uma aplicação desenvolvida para gerenciar o processo de tombamento de bens patrimoniais da instituição. O tombamento é um procedimento utilizado para registro e controle dos bens, permitindo o acompanhamento de sua utilização, localização e estado de conservação ao longo do tempo.
 
 ## Visão Geral
-
 ### 1.1 Objetivo
 
 Este sistema foi desenvolvido com o objetivo de facilitar e agilizar o processo de tombamento, proporcionando uma gestão eficiente do patrimônio da instituição.
@@ -19,14 +18,20 @@ Este sistema foi desenvolvido com o objetivo de facilitar e agilizar o processo 
 * [x] **Gerenciamento de Bens** Permite o registro, busca, atualização e remoção de informações dos bens cadastrados, incluindo estado de conservação, número de tombamento, valor, localização, entre outros critérios.
 * [x] **Relatórios:** Gera relatórios sobre o patrimônio da instituição, incluindo inventário de bens, movimentações, entre outros.
 
-### 1.3 Tecnologias Utilizadas
+### 1.3 Mapa Funcional
+
+<div align="center">
+  <img src="https://i.imgur.com/XiB04r8.png" alt="page-2" width="600" height="auto">
+</div>
+
+### 1.4 Tecnologias Utilizadas
 
 - **Frontend:** HTML5, CSS3, JavaScript
 - **Backend:** PHP
 - **Banco de Dados:** MySQL
 - **Autenticação:** JWT (JSON Web Tokens) para autenticação de usuários
 
-### 1.4 Acesso Online
+### 1.5 Acesso Online
 
 [Disponível para acesso online](https://stock.eeepmanoelmano.com.br)
 

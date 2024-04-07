@@ -19,10 +19,11 @@ Este sistema foi desenvolvido com o objetivo de facilitar e agilizar o processo 
 * [x] **Relatórios:** Gera relatórios sobre o patrimônio da instituição, incluindo inventário de bens, movimentações, entre outros.
 
 ### 1.3 Mapa Funcional
-
+<br><br>
 <div align="center">
   <img src="https://i.imgur.com/XiB04r8.png" alt="page-2" width="600" height="auto">
 </div>
+<br><br>
 
 ### 1.4 Tecnologias Utilizadas
 

@@ -1,5 +1,5 @@
  <div align="center">
-  <img src="https://i.imgur.com/v4D3Cao.png" alt="Stock Manager Logo" width="500" height="auto">
+  <img src="https://i.imgur.com/uI0SrjJ.png" alt="Stock Manager Logo" width="500" height="auto">
 </div>
 
 ## Stock Manager - Sistema de Gerenciamento de Inventário Instituicional
@@ -36,7 +36,7 @@ Esta implementação reside em um site institucional da EEEP Manoel Mano, sendo 
 
 ---
 
-**Stock Manager** - Gerencie seu inventário laboratorial de maneira eficiente e organizada.
+**Stock Manager** - Gerenciamento sistematizado e rastreamento integral dos ativos institucionais.
 
 <div align="center">
   <img src="assets/readme/page-2.png" alt="page-2" width="1000" height="auto">

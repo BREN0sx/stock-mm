@@ -25,7 +25,7 @@ echo "<script>document.getElementById('item-counter').innerText = '(" . mysqli_n
 
 if(mysqli_num_rows($result) > 0) {
  $output .= '
- <table>
+ <table class="table-items">
      <thead>
          <tr>
              <th style="width: 8vw;">Código</th>

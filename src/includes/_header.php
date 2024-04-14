@@ -18,6 +18,8 @@ if(isset($_COOKIE['token'])){
     $name_user = $decoded->data->name_user;
     $profile_user = $decoded->data->profile_user;
     $admin_user = $decoded->data->admin_user;
+    $loged_user = $decoded->data->loged_user;
+    $role_name = $admin_user == 1 ? "Admin" : "Viewer";
 } else {
 	header('location: ../auth');
 }
@@ -35,6 +37,9 @@ if(isset($_COOKIE['token'])){
     <meta property="og:site_name" content="Stock Manager">
     <meta property="og:title" content="Stock Manager - EEEP Manoel Mano">
     <meta property="og:image" content="https://i.imgur.com/nNLnE7P.jpeg">
+
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment-with-locales.min.js"></script>
 
     <script src="https://unpkg.com/popper.js@1"></script>
     <script src="https://unpkg.com/tippy.js@5"></script>
@@ -68,6 +73,9 @@ if(isset($_COOKIE['token'])){
     <nav class="navbar">
         <div class="nav-logo"><a href="../map"><img src="../../src/assets/LogoMM_Stock_White.svg" alt="LabStock"></a></div>
 
+        <div style="display: flex;align-items: center;">
+
+        <a class="nav-btn toolt" href="../history" title="Histórico"><span class="material-symbols-outlined">timeline</span></a>
         <div class="user-profile" onclick="toggleProfile()">
             <img src="<?php echo $profile_user?>" alt="">
             <div class="user-info">
@@ -75,13 +83,14 @@ if(isset($_COOKIE['token'])){
                     <?php echo $name_user?>
                 </p>
                 <p class="user-role">
-                    <?php echo $admin_user == 1 ? "Admin" : "Viewer" ?>
+                    <?php echo $role_name?>
                 </p>
             </div>
-            <div class="logout-user"> 
+            <div class="logout-user toolt" title="Sair"> 
                 <span class="material-symbols-outlined">logout</span>
                 <p>Sair</p>
             </div>
+        </div>
         </div>
     </nav>
 
@@ -94,4 +103,33 @@ if(isset($_COOKIE['token'])){
             classListProfile.toggle("active");
         }
     </script>
+
+<style>
+  .tippy-tooltip.custom-theme {
+    color: #fff;
+    border: 1px solid #00d65eba;
+  }
+</style>
+
+<script>
+  $(document).ready(function() {
+    $(document).on('mouseenter', '.toolt', function() {
+        var tooltipInstance = tippy(this, { 
+            followCursor: false,
+            arrow: false,
+            placement: 'bottom',
+            delay: 5,
+            distance: 5,
+            allowHTML: true,
+            theme: 'custom',
+            ignoreAttributes: true,
+            content(reference) {
+                const title = reference.getAttribute('title');
+                reference.removeAttribute('title');
+                return title;
+            }
+        });
+    });
+});
+</script>
     <script src="../../src/js/disconnectUser.js"></script>

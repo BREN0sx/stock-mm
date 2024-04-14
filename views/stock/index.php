@@ -1,3 +1,5 @@
+<?php if (empty($_GET['room'])) return header('Location: ' . $_SERVER['REQUEST_URI'] . '?room=1'); ?>
+
 <?php require '../../src/includes/_header.php'?>
 <?php require '../../src/includes/_db.php'?>
 <?php require '../../src/structures/item_viewer.php'?>
@@ -20,9 +22,6 @@
 
 <div class="main-container">
     <h1><?php echo ucfirst(strtolower($session_name))?> <span id="item-counter">(<?php echo mysqli_num_rows($item_result)?>)</span></h1>
-    <div class="main-container-action">
-
-    </div>
 </div>
 <div class="products-interaction">
     <input type="text" id="search_item" name="search_item" placeholder="Pesquisar por código, nome, categoria, status ou ano" autocomplet="off">
@@ -43,7 +42,7 @@
 
           <li class="dropdown-list-item" id="export_pdf_3">
             <span class="material-symbols-outlined">deployed_code_update</span>
-              Insensíveis
+              Inservíveis
           </li>
         </ul>
       </div>
@@ -96,17 +95,6 @@
 
   const toggle = () => classList.toggle("active");
 </script>
-
-<style>
-  .tippy-tooltip.custom-theme {
-    background-color: white;
-    color: black;
-    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1),0px 2px 4px 0px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1),0px -2px 4px 0px rgba(0,0,0,0.1),0px -2px 4px 0px rgba(0,0,0,0.1);
-    &[data-placement^='top'] .tippy-arrow {
-      border-top-color: white;
-    }
-  }
-</style>
 
 <script>
   $(document).ready(function() {

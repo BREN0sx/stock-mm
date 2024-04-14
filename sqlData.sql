@@ -10,12 +10,27 @@ SET max_statement_time = 10;
 set global innodb_buffer_pool_size = 2147483648;
 set global query_cache_size = 268435456;
 
+CREATE TABLE `history_log` (
+  `id_log` int(11) NOT NULL AUTO_INCREMENT,
+  `type_log` int(11) DEFAULT 1,
+  `event_log` text DEFAULT NULL,
+  `id_item` int(11) DEFAULT NULL,
+  `time_log` timestamp NULL DEFAULT current_timestamp(),
+  `id_user` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_log`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+
+CREATE TABLE `users_attempts` (
+  `ip_address` varchar(20) NOT NULL,
+  `timestamp` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+
 DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
   `id_category` int(11) NOT NULL AUTO_INCREMENT,
   `name_category` varchar(255) NOT NULL,
   PRIMARY KEY (`id_category`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `categories` VALUES (1,'Eletrônicos'),(2,'Móveis'),(3,'Laboratoriais'),(4,'Livros e Materiais'),(5,'Ferramentas'),(6,'Esportivos'),(7,'Objetos de Valor'),(8,'Cozinha'),(9,'Limpeza'),(10,'Segurança'),(11,'Roupas e Uniformes'),(12,'Eletrodomésticos');
 
@@ -50,7 +65,7 @@ CREATE TABLE `places` (
   `name_place` varchar(255) NOT NULL,
   `floor_place` varchar(255) NOT NULL,
   PRIMARY KEY (`id_place`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `places` VALUES (1,'Auditório','0'),(2,'Secretaria','0'),(3,'Coordenação Pedagógica','0'),(4,'Coordenação Estágio','0'),(5,'Diretoria','0'),(6,'Sala Professores','0'),(7,'Laboratório Linguas','0'),(8,'Laboratório Informática','0'),(9,'Banheiro','0'),(10,'Laboratório Matemática','0'),(11,'Almoxarifado','0'),(12,'Laboratório Enfermagem','0'),(13,'Laboratório Biologia','0'),(14,'Laboratório Química','0'),(15,'Administração','0'),(16,'Biblioteca - Térreo','0'),(17,'Laboratório de Desenvolvimento Tecnológico','0'),(18,'Quadra','0'),(19,'Laboratório Especial 02','0'),(20,'Laboratório Especial 01','0'),(21,'Cozinha Refeitório','0'),(22,'Cozinha Café','0'),(23,'Grêmio Estudantil','0'),(24,'Refeitório','0'),(25,'Biblioteca - Andar','1'),(26,'SALA 12','1'),(27,'SALA 11','1'),(28,'SALA 10','1'),(29,'SALA 09','1'),(30,'SALA 08','1'),(31,'SALA 07','1'),(32,'SALA 06','1'),(33,'SALA 05','1'),(34,'SALA 04','1'),(35,'SALA 03','1'),(36,'SALA 02','1'),(37,'SALA 01','1');
 
@@ -59,19 +74,22 @@ CREATE TABLE `status` (
   `id_status` int(11) NOT NULL AUTO_INCREMENT,
   `name_status` varchar(255) NOT NULL,
   PRIMARY KEY (`id_status`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `status` VALUES (0,'Péssimo'),(1,'Ruim'),(2,'Regular'),(3,'Bom'),(4,'Ótimo');
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
-  `id_user` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) NOT NULL,
   `name_user` varchar(255) NOT NULL,
   `pass_user` varchar(255) NOT NULL,
+  `profile_user` varchar(255) DEFAULT NULL,
+  `loged_user` timestamp NULL DEFAULT NULL,
+  `admin_user` int(1) DEFAULT 0,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
 
-INSERT INTO `users` VALUES (1,'admin','123456');
+INSERT INTO `users` VALUES (1,'admin','123456', 'https://cdn.discordapp.com/avatars/557355064864538624/824c9cd2a16ae68b53885b637c32b249.png', '', '1');
 
 //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECRETARIA =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=//
 

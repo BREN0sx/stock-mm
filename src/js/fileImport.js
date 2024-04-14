@@ -12,7 +12,10 @@ document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
     inputElement.addEventListener("change", (e) => {
         if (inputElement.files.length) {
             const file = inputElement.files[0];
-            if (isImage(file)) {
+            if (file.size > 1024 * 1024) {
+                alert("O arquivo é maior do que 1 MB. Por favor, selecione um arquivo menor.");
+                inputElement.value = '';
+            } else if (isImage(file)) {
                 updateThumbnail(dropZoneElement, file);
             } else {
                 alert("Por favor, selecione um arquivo de imagem.");
@@ -36,7 +39,9 @@ document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
 
         if (e.dataTransfer.files.length) {
             const file = e.dataTransfer.files[0];
-            if (isImage(file)) {
+            if (file.size > 1024 * 1024) {
+                alert("O arquivo é maior do que 1 MB. Por favor, selecione um arquivo menor.");
+            } else if (isImage(file)) {
                 inputElement.files = e.dataTransfer.files;
                 updateThumbnail(dropZoneElement, file);
             } else {

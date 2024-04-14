@@ -59,8 +59,33 @@ function item_add(){
                 got_item = NULLIF(got_item, '')
             WHERE id_item = $last_insert_id
         ");
+
+        $itemDataBk = [
+            'nN' => $name_item,
+            'nA' => $about_item,
+            'nCI' => $ci_item,
+            'nPC' => $price_item,
+            'nG' => $got_item,
+            'nS' => $id_status,
+            'nPL' => $id_place,
+            'nCA' => $id_category,
+
+            'aN' => '',
+            'aA' => '',
+            'aCI' => '',
+            'aPC' => '',
+            'aG' => '',
+            'aS' => '',
+            'aPL' => '',
+            'aCA' => '',
+        ];
+
+        $itemDataJson = json_encode($itemDataBk);
+        $itemDataStr =  mysqli_real_escape_string($db, $itemDataJson);
+        
+        mysqli_query($db, "INSERT INTO history_log (type_log, event_log, id_item, id_user) VALUES ('1', '$itemDataStr', '$last_insert_id', '$user_item')");
     }
-    
+
     header("Location: ../../views/stock?room=$id_place");
 }
 
@@ -100,6 +125,31 @@ function item_edit(){
                 got_item = NULLIF(got_item, '')
             WHERE id_item = $id
         ");
+
+        $itemDataBk = [
+            'nN' => $name_item,
+            'nA' => $about_item,
+            'nCI' => $ci_item,
+            'nPC' => $price_item,
+            'nG' => $got_item,
+            'nS' => $id_status,
+            'nPL' => $id_place,
+            'nCA' => $id_category,
+            
+            'aN' => $item_row['name_item'],
+            'aA' => $item_row['about_item'],
+            'aCI' => $item_row['ci_item'],
+            'aPC' => $item_row['price_item'],
+            'aG' => $item_row['got_item'],
+            'aS' => $item_row['id_status'],
+            'aPL' => $item_row['id_place'],
+            'aCA' => $item_row['id_category']
+        ];
+
+        $itemDataJson = json_encode($itemDataBk);
+        $itemDataStr =  mysqli_real_escape_string($db, $itemDataJson);
+        
+        mysqli_query($db, "INSERT INTO history_log (type_log, event_log, id_item, id_user) VALUES ('2', '$itemDataStr', '$id', '$user_item')");
     }
 
     header("Location: ../../views/stock?room=$id_place&item=$id");
@@ -110,8 +160,40 @@ function item_remove(){
 
     $id_item = $_POST['id'];
     $id_place = $_POST['place_id'];
+    $user_item = $_POST['id_user'];
+
+    $item_query = "SELECT * FROM item WHERE id_item = '$id_item'";
+    $item_result = mysqli_query($db, $item_query);
+    $item_row = mysqli_fetch_assoc($item_result);
+
+    $itemDataBk = [
+        'nN' => '',
+        'nA' => '',
+        'nCI' => '',
+        'nPC' => '',
+        'nG' => '',
+        'nS' => '',
+        'nPL' => '',
+        'nCA' => '',
+        
+        'aN' => $item_row['name_item'],
+        'aA' => $item_row['about_item'],
+        'aCI' => $item_row['ci_item'],
+        'aPC' => $item_row['price_item'],
+        'aG' => $item_row['got_item'],
+        'aS' => $item_row['id_status'],
+        'aPL' => $item_row['id_place'],
+        'aCA' => $item_row['id_category']
+    ];
+
+    $itemDataJson = json_encode($itemDataBk);
+    $itemDataStr =  mysqli_real_escape_string($db, $itemDataJson);
+
     $item_query = "DELETE FROM item WHERE id_item = $id_item";
     mysqli_query($db, $item_query);
+    
+    mysqli_query($db, "INSERT INTO history_log (type_log, event_log, id_item, id_user) VALUES ('3', '$itemDataStr', '$id_item', '$user_item')");
+
     header("Location: ../../views/stock?room=$id_place");
 }
 ?>

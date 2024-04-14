@@ -4,7 +4,9 @@
     if ($_GET['tab'] != 3) return;
 
     if (isset($_COOKIE['token'])) {
-        $admin_user = json_decode(base64_decode(explode('.', $_COOKIE['token'])[1]))->data->admin_user;
+        $user_decoder = json_decode(base64_decode(explode('.', $_COOKIE['token'])[1]));
+        $id_user = $user_decoder->data->id_user;
+        $admin_user = $user_decoder->data->admin_user;
         if ($admin_user != 1) return;
     } else {
         return;
@@ -121,6 +123,7 @@
 
             <div class="viewer-about" style="color: #616161; margin-bottom: 2rem;">Confirma a exclusão do item selecionado?</div>
         <input type="hidden" name="action" value="item_remove">
+        <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
         <input type="hidden" name="id" value="<?php echo $item_id;?>">
         <input type="hidden" name="place_id" value="<?php echo $place_id;?>">
         <div class="btn-section">

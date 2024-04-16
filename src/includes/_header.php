@@ -40,12 +40,11 @@ if(isset($_COOKIE['token'])){
 
     <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/latest/moment-with-locales.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <script src="https://unpkg.com/popper.js@1"></script>
     <script src="https://unpkg.com/tippy.js@5"></script>
     <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.5.0/dist/svg-pan-zoom.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -55,7 +54,6 @@ if(isset($_COOKIE['token'])){
 </head>
 <body>
     <!-- LOADER -->
-
     <div class="loader"><div class="spin"></div></div>
     <script>
         window.addEventListener("load", () => {
@@ -103,13 +101,6 @@ if(isset($_COOKIE['token'])){
             classListProfile.toggle("active");
         }
     </script>
-
-<style>
-  .tippy-tooltip.custom-theme {
-    color: #fff;
-    border: 1px solid #00d65eba;
-  }
-</style>
 
 <script>
   $(document).ready(function() {

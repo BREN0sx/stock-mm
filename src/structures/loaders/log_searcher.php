@@ -34,11 +34,7 @@ if(isset($_POST["query"])) {
     END
 ) ORDER BY type_log DESC";
 
-} else if (isset($_POST["user"])) {
-    $user = $_POST["user"];
-    if (!isset($_POST["user"])) $user = $id_user;
-    $query = "SELECT * FROM history_log WHERE id_user = '$user' ORDER BY id_log DESC";
- } else {
+} else {
    $query = "SELECT * FROM history_log ORDER BY id_log DESC";
 }
 $result = mysqli_query($db, $query);
@@ -139,14 +135,14 @@ if(mysqli_num_rows($result) > 0) {
     }
 
     $types = array(
-        1 => ['Adicionado', 'status_nice'],
-        2 => ['Atualizado', 'status_good'],
-        3 => ['Deletado', 'status_danger']
+        1 => ['Adicionado', 'status_nice', 'add'],
+        2 => ['Atualizado', 'status_good', 'sync'],
+        3 => ['Deletado', 'status_danger', 'remove']
     );
 
     $output .= '
     <tr id="log_'.$row['id_log'].'">
-        <td><b id="'.$types[$row["type_log"]][1].'">'.$types[$row["type_log"]][0].'</b>'.$nameLinkItem.'</td>
+        <td><div class="desktop-text"><b id="'.$types[$row["type_log"]][1].'">'.$types[$row["type_log"]][0].'</b>'.$nameLinkItem.'</div><div class="mobile-text"><b class="mobile-icon" id="'.$types[$row["type_log"]][1].'"><span class="material-symbols-outlined">'.$types[$row["type_log"]][2].'</span></b>'.$nameLinkItem.'</div></td>
         <td> <a href="?user='.$resp_id.'">'.$respName.'</a></td>
         <td>'.date('d/m/Y \à\s H:i', strtotime($row["time_log"])).'</td>
         <td class="expand-history">Detalhes<span class="material-symbols-outlined">expand_more</span></td>
@@ -156,7 +152,7 @@ if(mysqli_num_rows($result) > 0) {
             <div class="fold-content">
             <div class="fold-section">
                 <div class="viewer-text">
-                    <div class="title-text">Código Tombamento:</div>
+                    <div class="title-text">Tombamento:</div>
                     <div class="info-text">'.strChanges($Aci_item, $Nci_item).'</div>
                 </div>
                 <div class="viewer-text">

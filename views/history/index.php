@@ -17,17 +17,27 @@
     
     $role_name = $user['admin_user'] == 1 ? "Admin" : "Viewer";
 
-    $activity_query = "SELECT DATE(time_log) AS data, COUNT(*) AS alteracoes FROM history_log WHERE id_user = $user_tab GROUP BY DATE(time_log)";
+    $activity_query = "SELECT DATE(time_log) AS data, COUNT(*) AS alteracoes 
+                  FROM history_log 
+                  WHERE id_user = $user_tab
+                  AND time_log >= DATE_SUB(CURDATE(), INTERVAL 29 DAY) 
+                  GROUP BY DATE(time_log)";
+
     $activity_result = mysqli_query($db, $activity_query);
 
-    $data = array();
+    $json_data = array();
 
-    $data['0000-00-00'] = '0';
-    while($row = $activity_result->fetch_assoc()) {
-        $data[$row['data']] = $row['alteracoes'];
+    for ($i = 29; $i >= 0; $i--) {
+        $date = date('Y-m-d', strtotime("-$i days"));
+        $json_data[$date] = 0;
     }
 
-    $json_data = json_encode($data);
+    while ($row = $activity_result->fetch_assoc()) {
+        $date = $row['data'];
+        $json_data[$date] = $row['alteracoes'];
+    }
+
+    $json_data = json_encode($json_data);
 ?>
     <div class="log-container">
         <div class="log-section">
@@ -45,7 +55,7 @@
                 <img src="<?php echo $user['profile_user']?>" alt="user-profile">
                 <div class="name-user"><?php echo $user['name_user']?></div>
                 <div class="badge-user"><?php echo $role_name?></div>
-                <canvas id="activity-user"></canvas>
+                <canvas id="activity-user" title="Atividade do último mês"></canvas>
                 <div class="hr-line"></div>
                 <div>
                 <div class="info-user">
@@ -62,14 +72,30 @@
 
     <script>
         var dados_php = <?php echo $json_data; ?>;
+        var labels = [];
+        var data = [];
+        var zerosRemoved = false;
 
-        var labels = Object.keys(dados_php);
-        var data = Object.values(dados_php);
+        var currentDate = new Date();
+        for (var i = 29; i >= 0; i--) {
+            var date = new Date(currentDate);
+            date.setDate(date.getDate() - i);
+            var dateString = date.toISOString().split('T')[0];
 
-        if (labels.length === 0) {
-            labels.push('Data Inicial');
+            if (!zerosRemoved && dados_php[dateString] !== 0) {
+                zerosRemoved = true;
+            }
+
+            if (zerosRemoved || dados_php[dateString] !== 0) {
+                labels.push(dateString);
+                data.push(dados_php[dateString]);
+            }
+        }
+
+        if (data.length === 0) {
+            labels.push('None');
             data.push(0);
-            labels.push('Data Final');
+            labels.push('None');
             data.push(0);
         }
 
@@ -162,6 +188,28 @@
             else load_data();
         });
         });
+    </script>
+
+    <script>
+    $(document).ready(function() {
+        $(document).on('mouseenter', '#activity-user', function() {
+            var tooltipInstance = tippy(this, { 
+                followCursor: false,
+                arrow: false,
+                placement: 'bottom',
+                delay: 5,
+                distance: -5,
+                allowHTML: true,
+                theme: 'custom',
+                ignoreAttributes: true,
+                content(reference) {
+                const title = reference.getAttribute('title');
+                reference.removeAttribute('title');
+                return title;
+            },
+            });
+        });
+        })
     </script>
 
     <script>

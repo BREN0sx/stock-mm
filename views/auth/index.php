@@ -29,9 +29,11 @@ if(isset($_COOKIE['token'])){
 
             $user_name = $_POST["user_name"];
             $user_pass = $_POST["user_pass"];
-
-            $query = "SELECT * FROM users WHERE name_user = '$user_name'";
-            $result = mysqli_query($db, $query);
+            
+            $stmt = $db->prepare("SELECT * FROM users WHERE name_user = ?");
+            $stmt->bind_param("s", $user_name);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
             $error = null;
 

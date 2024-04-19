@@ -2614,6 +2614,8 @@
 
          var placeName = places[id];
          if (!placeName) return;
+         
+         var dd = $(this).prevAll('title').first();
 
          var tooltipInstance = tippy(this, { 
             followCursor: true,
@@ -2624,7 +2626,10 @@
             allowHTML: true,
             theme: 'custom',
             ignoreAttributes: true,
-            content: placeName
+            content(reference) {
+                dd.remove()
+                return placeName;
+            },
           });
       });
    });

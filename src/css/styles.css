@@ -890,6 +890,7 @@ input[type="date"] {
 .viewer-image .viewer-product_image.editor-viewer {
     position: absolute;
     height: 200px;
+    max-width: 80%;
     z-index: -1;
     opacity: 0.3;
     filter: grayscale(1);

@@ -32,10 +32,10 @@ if(isset($_POST["query"])) {
         WHEN 'Atualizado' LIKE CONCAT('$search', '%') THEN 2
         WHEN 'Adicionado' LIKE CONCAT('$search', '%') THEN 1
     END
-) ORDER BY type_log DESC";
+) ORDER BY time_log DESC";
 
 } else {
-   $query = "SELECT * FROM history_log ORDER BY id_log DESC";
+   $query = "SELECT * FROM history_log ORDER BY time_log DESC";
 }
 $result = mysqli_query($db, $query);
 

@@ -20,6 +20,9 @@ if(isset($_COOKIE['token'])){
     $admin_user = $decoded->data->admin_user;
     $loged_user = $decoded->data->loged_user;
     $role_name = $admin_user == 1 ? "Admin" : "Viewer";
+
+    $token = $_COOKIE['token'];
+    setcookie("token", $token, time() + 3600, "/", "", false, true);
 } else {
 	header('location: ../auth');
 }

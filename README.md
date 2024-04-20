@@ -17,6 +17,7 @@ Este sistema foi desenvolvido com o objetivo de facilitar e agilizar o processo 
 * [x] **Controle de Movimentações:** Registra as movimentações dos bens, como transferências entre setores, alterações, registro de autoria, etc.
 * [x] **Gerenciamento de Bens** Permite o registro, busca, atualização e remoção de informações dos bens cadastrados, incluindo estado de conservação, número de tombamento, valor, localização, entre outros critérios.
 * [x] **Relatórios:** Gera relatórios sobre o patrimônio da instituição, incluindo inventário de bens, movimentações, entre outros.
+* [x] **Auto Disconnect:** Os usuários permanecem conectados durante a atividade, mas são desconectados automaticamente após períodos de inatividade, garantindo a segurança e eficiência do sistema.
 
 ### 1.3 Mapa Funcional
 <br><br>

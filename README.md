@@ -10,7 +10,7 @@
  
 Este sistema foi desenvolvido com o objetivo de facilitar e agilizar o processo de tombamento, proporcionando uma gestão eficiente do patrimônio da instituição.
 
-### 1.2 Recursos
+### 1.2 Recursos 
 
 * [x] **Mapa de Navegação:** Guiamento intuitivo pelos espaços, facilitando a localização dos ativos.
 * [x] **Rastreamento de Bens:** Localização instantânea de bens via códigos de tombamento.
